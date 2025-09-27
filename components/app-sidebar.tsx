@@ -12,10 +12,11 @@ import {
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Link from "next/link";
+import { Github, Linkedin } from "lucide-react";
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar className="font-bitcount-single">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -72,7 +73,19 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <div className="flex items-center justify-center gap-4">
+          <Link href="https://github.com/Ludovic-Blondon" target="_blank">
+            <Github className="size-5" />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/ludovic-blondon-746016178/"
+            target="_blank"
+          >
+            <Linkedin className="size-5" />
+          </Link>
+        </div>
+      </SidebarFooter>
     </Sidebar>
   );
 }
