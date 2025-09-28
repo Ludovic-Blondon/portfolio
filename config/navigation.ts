@@ -26,15 +26,15 @@ export const navigation: {
     items: [
       {
         label: "NomadHub",
-        href: "/projects/nomadhub",
+        href: "/nomadhub",
       },
       {
         label: "CodeHub",
-        href: "/projects/codehub",
+        href: "/codehub",
       },
       {
         label: "Argument",
-        href: "/projects/argument",
+        href: "/argument",
       },
     ],
   },
