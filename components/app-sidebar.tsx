@@ -1,10 +1,9 @@
+"use client";
+
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
@@ -13,14 +12,19 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Link from "next/link";
 import { Github, Linkedin } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Navigation } from "./navigation";
+import { navigation } from "@/config/navigation";
 
 export function AppSidebar() {
+  const pathname = usePathname();
+
   return (
     <Sidebar className="font-bitcount-single">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+            <SidebarMenuButton size="lg" asChild isActive={pathname === "/"}>
               <Link href="/">
                 <div className="flex size-8 items-center justify-center rounded-lg">
                   <Avatar>
@@ -38,40 +42,8 @@ export function AppSidebar() {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarMenu>
-          <SidebarGroup>
-            <SidebarGroupLabel>Présentation</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>Mon parcours</SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>Mes études</SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>Mes compétences</SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarMenu>
-        <SidebarGroup>
-          <SidebarGroupLabel>Mes projets</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton>NomadHub</SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton>CodeHub</SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton>Argument</SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        <Navigation navigation={navigation.navAbout} pathname={pathname} />
+        <Navigation navigation={navigation.navProjects} pathname={pathname} />
       </SidebarContent>
       <SidebarFooter>
         <div className="flex items-center justify-center gap-4">
