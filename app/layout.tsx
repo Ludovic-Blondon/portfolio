@@ -16,16 +16,23 @@ import { Github, Linkedin } from "lucide-react";
 const bitcountSingle = Bitcount_Single({
   variable: "--font-bitcount-single",
   subsets: ["latin"],
+  fallback: ["monospace"],
+  preload: true,
+  display: "swap",
 });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  preload: true,
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  preload: false, // Utilisée moins fréquemment
+  display: "swap",
 });
 
 export const metadata: Metadata = {
