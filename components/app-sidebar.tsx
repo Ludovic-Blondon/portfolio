@@ -3,7 +3,6 @@
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
@@ -11,7 +10,6 @@ import {
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Link from "next/link";
-import { Github, Linkedin } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Navigation } from "./navigation";
 import { navigation } from "@/config/navigation";
@@ -45,19 +43,6 @@ export function AppSidebar() {
         <Navigation navigation={navigation.navAbout} pathname={pathname} />
         <Navigation navigation={navigation.navProjects} pathname={pathname} />
       </SidebarContent>
-      <SidebarFooter>
-        <div className="flex items-center justify-center gap-4">
-          <Link href="https://github.com/Ludovic-Blondon" target="_blank">
-            <Github className="size-5" />
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/ludovic-blondon-746016178/"
-            target="_blank"
-          >
-            <Linkedin className="size-5" />
-          </Link>
-        </div>
-      </SidebarFooter>
     </Sidebar>
   );
 }

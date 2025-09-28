@@ -10,6 +10,8 @@ import {
 import { AppSidebar } from "@/components/app-sidebar";
 import { Separator } from "@/components/ui/separator";
 import { AppBreadcrumb } from "@/components/app-breadcrumb";
+import Link from "next/link";
+import { Github, Linkedin } from "lucide-react";
 
 const bitcountSingle = Bitcount_Single({
   variable: "--font-bitcount-single",
@@ -51,13 +53,33 @@ export default function RootLayout({
           <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
-              <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-                <SidebarTrigger className="-ml-1" />
-                <Separator
-                  orientation="vertical"
-                  className="mr-2 data-[orientation=vertical]:h-4"
-                />
-                <AppBreadcrumb />
+              <header className="flex h-14 shrink-0 items-center gap-2 border-b px-4">
+                <div className="flex flex-1 items-center gap-2 px-3">
+                  <SidebarTrigger className="-ml-1" />
+                  <Separator
+                    orientation="vertical"
+                    className="mr-2 data-[orientation=vertical]:h-4"
+                  />
+                  <AppBreadcrumb />
+                </div>
+                <div className="ml-auto flex items-center gap-2 px-3">
+                  <Link
+                    href="https://github.com/Ludovic-Blondon"
+                    target="_blank"
+                  >
+                    <Github className="size-4" />
+                  </Link>
+                  <Separator
+                    orientation="vertical"
+                    className="mx-2 data-[orientation=vertical]:h-4"
+                  />
+                  <Link
+                    href="https://www.linkedin.com/in/ludovic-blondon-746016178/"
+                    target="_blank"
+                  >
+                    <Linkedin className="size-4" />
+                  </Link>
+                </div>
               </header>
               {children}
             </SidebarInset>

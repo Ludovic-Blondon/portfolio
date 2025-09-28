@@ -25,12 +25,13 @@ export function AppBreadcrumb() {
   }, []);
 
   const resolveLabel = (item: string) =>
-    navigationMap.get(`/${item}`) || item.charAt(0).toUpperCase() + item.slice(1);
+    navigationMap.get(`/${item}`) ||
+    item.charAt(0).toUpperCase() + item.slice(1);
 
   return (
-    <Breadcrumb className="font-bitcount-single">
+    <Breadcrumb className="font-bitcount-single hidden md:block">
       <BreadcrumbList>
-        <BreadcrumbItem className="hidden md:block">
+        <BreadcrumbItem>
           {breadcrumbItems.length === 0 ? (
             <BreadcrumbPage>Mon portfolio</BreadcrumbPage>
           ) : (
@@ -40,7 +41,7 @@ export function AppBreadcrumb() {
         {breadcrumbItems.map((item, index) => (
           <Fragment key={item}>
             <BreadcrumbSeparator />
-            <BreadcrumbItem className="hidden md:block">
+            <BreadcrumbItem>
               {index === breadcrumbItems.length - 1 ? (
                 <BreadcrumbPage>{resolveLabel(item)}</BreadcrumbPage>
               ) : (
