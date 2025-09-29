@@ -1,4 +1,4 @@
-import { NavigationConfig } from "@/types/sidebar";
+import { NavigationConfig } from "@/types";
 
 export const navigation: {
   navAbout: NavigationConfig;

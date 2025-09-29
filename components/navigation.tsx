@@ -7,7 +7,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "./ui/sidebar";
-import { NavigationConfig } from "@/types/sidebar";
+import { NavigationConfig } from "@/types";
 
 export function Navigation({
   navigation,
