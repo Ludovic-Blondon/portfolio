@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { experiences } from "@/config/experiences";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { Briefcase, Calendar } from "lucide-react";
 import { PageWrapper } from "@/components/page-wrapper";
 
 export const metadata: Metadata = {
@@ -27,8 +27,11 @@ export default function CareerPage() {
 
         {/* Experiences */}
         <div className="space-y-12">
-          {experiences.map((experience, index) => (
-            <div key={index} className="relative pl-8 md:pl-20">
+          {experiences.map((experience) => (
+            <div
+              key={`${experience.company}-${experience.period.start}`}
+              className="relative pl-8 md:pl-20"
+            >
               {/* Timeline dot */}
               <div className="absolute left-0 md:left-8 top-0 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background" />
 
@@ -39,11 +42,8 @@ export default function CareerPage() {
                     <div>
                       <h2 className="text-xl font-bold flex items-center gap-2">
                         <Briefcase className="w-5 h-5" />
-                        {experience.role}
-                      </h2>
-                      <p className="text-lg text-muted-foreground mt-1">
                         {experience.company}
-                      </p>
+                      </h2>
                     </div>
 
                     {/* Period and Location */}
@@ -57,20 +57,11 @@ export default function CareerPage() {
                             : experience.period.end}
                         </span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        <span>{experience.location}</span>
-                      </div>
                     </div>
                   </div>
                 </CardHeader>
 
                 <CardContent className="space-y-6">
-                  {/* Description */}
-                  <p className="text-sm text-muted-foreground">
-                    {experience.description}
-                  </p>
-
                   {/* Achievements */}
                   <div>
                     <h3 className="font-semibold mb-3 text-sm">Réalisations</h3>
