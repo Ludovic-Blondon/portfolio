@@ -44,7 +44,7 @@ export default function CareerPage() {
                   {experience.achievements.map((achievement, i) => (
                     <li key={i} className="flex gap-3 text-sm leading-relaxed">
                       <span className="text-muted-foreground/40 flex-shrink-0">
-                        —
+                        –
                       </span>
                       <span className="text-muted-foreground">
                         {achievement}
