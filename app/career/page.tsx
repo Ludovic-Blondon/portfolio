@@ -3,7 +3,7 @@ import { experiences } from "@/config/experiences";
 import { PageWrapper } from "@/components/page-wrapper";
 
 export const metadata: Metadata = {
-  title: "Career | Ludovic Blondon",
+  title: "Carrière",
   description:
     "Expériences professionnelles de Ludovic Blondon, développeur fullstack",
 };
@@ -15,7 +15,7 @@ export default function CareerPage() {
 
       <div className="relative">
         {/* Timeline line */}
-        <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-border/40 md:left-8" />
+        <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-border/60 md:left-8" />
 
         {/* Experiences */}
         <div className="space-y-12">
@@ -25,7 +25,7 @@ export default function CareerPage() {
               className="relative pl-8 md:pl-20"
             >
               {/* Timeline dot */}
-              <div className="absolute left-0 md:left-8 top-1 -translate-x-1/2 w-2 h-2 rounded-full bg-foreground/60" />
+              <div className="absolute left-0 md:left-8 top-1 -translate-x-1/2 w-2 h-2 rounded-full bg-foreground/70" />
 
               <div className="space-y-6">
                 {/* Header: Company, Period */}
@@ -41,8 +41,11 @@ export default function CareerPage() {
 
                 {/* Achievements */}
                 <ul className="space-y-1">
-                  {experience.achievements.map((achievement, i) => (
-                    <li key={i} className="flex gap-3 text-sm leading-relaxed">
+                  {experience.achievements.map((achievement) => (
+                    <li
+                      key={achievement}
+                      className="flex gap-3 text-sm leading-relaxed"
+                    >
                       <span className="text-muted-foreground/40 flex-shrink-0">
                         –
                       </span>
@@ -55,8 +58,8 @@ export default function CareerPage() {
 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2 text-xs text-muted-foreground/70">
-                  {experience.technologies.map((tech, i) => (
-                    <span key={i}>{tech}</span>
+                  {experience.technologies.map((tech) => (
+                    <span key={tech}>{tech}</span>
                   ))}
                 </div>
               </div>
