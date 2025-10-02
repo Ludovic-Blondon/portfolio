@@ -39,3 +39,14 @@ export type Achievement = {
     link: string;
   };
 };
+
+export type Study = {
+  id: string;
+  year: string;
+  title: string;
+  descriptions: string[];
+  certificates: {
+    name: string;
+    path: string;
+  }[];
+};
