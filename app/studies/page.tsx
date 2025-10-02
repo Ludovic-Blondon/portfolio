@@ -4,15 +4,15 @@ import { PageWrapper } from "@/components/page-wrapper";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Parcours",
+  title: "Formation",
   description:
-    "Parcours d'apprentissage de Ludovic Blondon, développeur fullstack autodidacte",
+    "Formation et certifications de Ludovic Blondon, développeur fullstack autodidacte",
 };
 
 export default function StudiesPage() {
   return (
     <PageWrapper>
-      <h1 className="text-2xl font-medium">Parcours</h1>
+      <h1 className="text-2xl font-medium">Formation</h1>
 
       <div className="relative">
         {/* Timeline line */}
