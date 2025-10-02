@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { experiences } from "@/config/experiences";
 import { PageWrapper } from "@/components/page-wrapper";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Carrière",
@@ -43,15 +44,28 @@ export default function CareerPage() {
                 <ul className="space-y-1">
                   {experience.achievements.map((achievement) => (
                     <li
-                      key={achievement}
+                      key={achievement.id}
                       className="flex gap-3 text-sm leading-relaxed"
                     >
                       <span className="text-muted-foreground/40 flex-shrink-0">
                         –
                       </span>
                       <span className="text-muted-foreground">
-                        {achievement}
+                        {achievement.description}
                       </span>
+                      {achievement.landingPage && (
+                        <span className="text-muted-foreground/70">
+                          <Link
+                            href={achievement.landingPage.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Visiter ${achievement.landingPage.name} (ouvre dans un nouvel onglet)`}
+                            className="hover:text-foreground transition-colors"
+                          >
+                            {achievement.landingPage.name} ↗
+                          </Link>
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>

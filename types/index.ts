@@ -26,7 +26,16 @@ export type Experience = {
     start: string;
     end: string | "Present";
   };
-  achievements: string[];
+  achievements: Achievement[];
   technologies: string[];
   projects?: Project[];
+};
+
+export type Achievement = {
+  id: string;
+  description: string;
+  landingPage?: {
+    name: string;
+    link: string;
+  };
 };
