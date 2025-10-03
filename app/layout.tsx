@@ -12,6 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { AppBreadcrumb } from "@/components/app-breadcrumb";
 import Link from "next/link";
 import { Github, Linkedin } from "lucide-react";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: {
@@ -99,6 +100,7 @@ export default function RootLayout({
             </SidebarInset>
           </SidebarProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
