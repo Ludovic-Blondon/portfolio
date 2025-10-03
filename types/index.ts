@@ -49,4 +49,5 @@ export type Study = {
     name: string;
     path: string;
   }[];
+  technologies: string[];
 };

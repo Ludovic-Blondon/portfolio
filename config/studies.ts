@@ -4,26 +4,27 @@ export const studies: Study[] = [
   {
     id: "1",
     year: "2025",
-    title: "Certifications NestJS et NextJS",
+    title: "Certifications Nest et Next",
     descriptions: [
-      "NestJS Fundamentals : REST API, PostgreSQL avec TypeORM, Dependency Injection, Configuration, OpenAPI, Tests, MongoDB avec Mongoose",
-      "NestJS Authentication : Authentification approfondie, Autorisation, API Keys, Google Authentication, Two-Factor Authentication",
-      "NextJS Fundamentals : Styling, Optimisations, Routing, Data Fetching, Search et Pagination, Mutations avec Server Actions, Error Handling, Form Validation et Accessibilité, Authentication avec NextAuth.js, Metadata",
+      "Nest Fundamentals : REST API, PostgreSQL avec TypeORM, Dependency Injection, Configuration, OpenAPI, Tests, MongoDB avec Mongoose",
+      "Nest Authentication : Authentification approfondie, Autorisation, API Keys, Google Authentication, Two-Factor Authentication",
+      "Next Fundamentals : Styling, Optimisations, Routing, Data Fetching, Search et Pagination, Mutations avec Server Actions, Error Handling, Form Validation et Accessibilité, Authentication avec NextAuth.js, Metadata",
     ],
     certificates: [
       {
-        name: "NestJS Fundamentals",
-        path: "/Certificat de réussite NestJS.pdf",
+        name: "Nest Fundamentals",
+        path: "/Certificat de réussite Nest.pdf",
       },
       {
-        name: "NestJS Authentication",
-        path: "/nestjs-authentication-course.pdf",
+        name: "Nest Authentication",
+        path: "/Nest-authentication-course.pdf",
       },
       {
-        name: "NextJS Fundamentals",
+        name: "Next Fundamentals",
         path: "/next-dashboard-app-certificate.pdf",
       },
     ],
+    technologies: ["Nest", "Next", "TypeScript", "JavaScript", "React"],
   },
   {
     id: "2",
@@ -44,5 +45,6 @@ export const studies: Study[] = [
         path: "/Diplome.pdf",
       },
     ],
+    technologies: ["HTML", "CSS", "JavaScript", "PHP"],
   },
 ];
