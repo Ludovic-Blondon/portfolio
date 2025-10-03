@@ -22,6 +22,8 @@ export const projects: Record<string, ProjectConfig> = {
       "TypeScript",
       "JavaScript",
       "React",
+      "ESLint",
+      "Prettier",
     ],
   },
   codehub: {
@@ -37,7 +39,7 @@ export const projects: Record<string, ProjectConfig> = {
       description:
         "CodeHub est un site de documentation technique destiné aux développeurs.",
     },
-    technologies: ["Next", "Fumadocs", "MDX", "React"],
+    technologies: ["Next", "Fumadocs", "MDX", "React", "ESlint", "Prettier"],
   },
   argument: {
     title: "Argument",

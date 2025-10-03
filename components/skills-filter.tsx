@@ -24,8 +24,8 @@ interface SkillsFilterProps {
   onValueChange: (value: string) => void;
 }
 
-const PLACEHOLDER_TEXT = "Rechercher une compétence...";
-const EMPTY_TEXT = "Aucune compétence trouvée.";
+const PLACEHOLDER_TEXT = "Rechercher une technologie...";
+const EMPTY_TEXT = "Aucune technologie trouvée.";
 
 export function SkillsFilter({
   skills,
@@ -62,7 +62,7 @@ export function SkillsFilter({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          aria-label="Filtrer les compétences"
+          aria-label="Filtrer les technologies"
           className="w-full justify-between text-sm text-muted-foreground font-normal h-9"
         >
           <span>{displayValue}</span>
@@ -86,12 +86,12 @@ export function SkillsFilter({
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
+      <PopoverContent
+        className="w-[var(--radix-popover-trigger-width)] p-0"
+        align="start"
+      >
         <Command>
-          <CommandInput
-            placeholder={PLACEHOLDER_TEXT}
-            className="text-sm"
-          />
+          <CommandInput placeholder={PLACEHOLDER_TEXT} className="text-sm" />
           <CommandList>
             <CommandEmpty className="text-sm text-muted-foreground py-6 text-center">
               {EMPTY_TEXT}
@@ -102,7 +102,8 @@ export function SkillsFilter({
                   key={skill}
                   value={skill}
                   onSelect={(currentValue) => {
-                    const newValue = currentValue === value.toLowerCase() ? "" : currentValue;
+                    const newValue =
+                      currentValue === value.toLowerCase() ? "" : currentValue;
                     onValueChange(newValue);
                     setOpen(false);
                   }}

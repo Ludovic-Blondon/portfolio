@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <PageWrapper>
-      <h1 className="text-2xl font-medium">Compétences</h1>
+      <h1 className="text-2xl font-medium">Technologies</h1>
       <SkillsFilterClient skills={skills} />
     </PageWrapper>
   );

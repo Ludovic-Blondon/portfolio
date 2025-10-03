@@ -19,7 +19,11 @@ export function SkillsFilterClient({ skills }: SkillsFilterClientProps) {
   return (
     <>
       <div className="max-w-xs">
-        <SkillsFilter skills={skills} value={filter} onValueChange={setFilter} />
+        <SkillsFilter
+          skills={skills}
+          value={filter}
+          onValueChange={setFilter}
+        />
       </div>
 
       {filteredSkills.length > 0 ? (
@@ -30,7 +34,7 @@ export function SkillsFilterClient({ skills }: SkillsFilterClientProps) {
         </div>
       ) : (
         <p className="text-sm text-muted-foreground/70">
-          Aucune compétence ne correspond à votre recherche.
+          Aucune technologie ne correspond à votre recherche.
         </p>
       )}
     </>
