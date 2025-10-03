@@ -13,11 +13,11 @@ export const studies: Study[] = [
     certificates: [
       {
         name: "Nest Fundamentals",
-        path: "/Certificat de réussite Nest.pdf",
+        path: "/certificat-de-reussite-nestjs.pdf",
       },
       {
         name: "Nest Authentication",
-        path: "/Nest-authentication-course.pdf",
+        path: "/nestjs-authentication-course.pdf",
       },
       {
         name: "Next Fundamentals",
@@ -45,6 +45,6 @@ export const studies: Study[] = [
         path: "/Diplome.pdf",
       },
     ],
-    technologies: ["HTML", "CSS", "JavaScript", "PHP"],
+    technologies: ["HTML", "CSS", "JavaScript", "PHP", "Git"],
   },
 ];

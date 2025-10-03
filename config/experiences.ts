@@ -96,7 +96,7 @@ export const experiences: Experience[] = [
       "PHP",
       "Symfony",
       "API Platform",
-      "jQuery",
+      "JQuery",
     ],
   },
   {

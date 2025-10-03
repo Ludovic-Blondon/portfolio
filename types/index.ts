@@ -6,6 +6,7 @@ export type ProjectConfig = {
   link?: string;
   github: string;
   metadata: Metadata;
+  technologies: string[];
 };
 
 export type NavigationConfig = {

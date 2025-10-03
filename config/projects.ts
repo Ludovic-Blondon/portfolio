@@ -14,6 +14,15 @@ export const projects: Record<string, ProjectConfig> = {
       title: "NomadHub",
       description: "NomadHub est une plateforme d'hébergement de voyageurs.",
     },
+    technologies: [
+      "Next",
+      "Shadcn",
+      "Better-auth",
+      "Tailwind",
+      "TypeScript",
+      "JavaScript",
+      "React",
+    ],
   },
   codehub: {
     title: "CodeHub",
@@ -28,6 +37,7 @@ export const projects: Record<string, ProjectConfig> = {
       description:
         "CodeHub est un site de documentation technique destiné aux développeurs.",
     },
+    technologies: ["Next", "Fumadocs", "MDX", "React"],
   },
   argument: {
     title: "Argument",
@@ -41,5 +51,6 @@ export const projects: Record<string, ProjectConfig> = {
       description:
         "Application iOS pour sauvegarder et organiser vos arguments de débat.",
     },
+    technologies: ["Swift"],
   },
 };
