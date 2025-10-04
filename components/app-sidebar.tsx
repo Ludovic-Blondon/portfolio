@@ -7,15 +7,20 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Navigation } from "./navigation";
 import { navigation } from "@/config/navigation";
+import { SunMoon } from "lucide-react";
+import { useTheme } from "next-themes";
+import { Button } from "./ui/button";
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
 
   return (
     <Sidebar className="font-bitcount-single">
@@ -43,6 +48,19 @@ export function AppSidebar() {
         <Navigation navigation={navigation.navAbout} pathname={pathname} />
         <Navigation navigation={navigation.navProjects} pathname={pathname} />
       </SidebarContent>
+      <SidebarFooter className="w-full flex justify-center">
+        <Button
+          className="cursor-pointer ml-auto"
+          variant="ghost"
+          onClick={() => {
+            setTheme(theme === "light" ? "dark" : "light");
+          }}
+          size="icon"
+          aria-label="Toggle theme"
+        >
+          <SunMoon className="size-5" />
+        </Button>
+      </SidebarFooter>
     </Sidebar>
   );
 }
