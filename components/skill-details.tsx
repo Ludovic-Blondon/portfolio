@@ -11,7 +11,7 @@ interface SkillDetailsProps {
 }
 
 export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
-  const { projects, achievements, studies } = getSkillRelatedItems(skill);
+  const { projects, experiences, studies } = getSkillRelatedItems(skill);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -22,7 +22,7 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
   }, [onClose]);
 
   const hasContent =
-    projects.length > 0 || achievements.length > 0 || studies.length > 0;
+    projects.length > 0 || experiences.length > 0 || studies.length > 0;
 
   if (!hasContent) {
     return null;
@@ -85,45 +85,57 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
         </div>
       )}
 
-      {/* Achievements */}
-      {achievements.length > 0 && (
+      {/* Experiences */}
+      {experiences.length > 0 && (
         <div className="space-y-3">
           <h3 className="text-sm font-medium text-muted-foreground">
             Expériences professionnelles
           </h3>
-          <ul className="space-y-2">
-            {achievements.map((achievement) => (
-              <li
-                key={`${achievement.company}-${achievement.id}`}
-                className="flex gap-3 text-sm leading-relaxed"
-              >
-                <span className="text-muted-foreground/40 flex-shrink-0">
-                  –
-                </span>
-                <div className="space-y-1">
-                  <div className="flex flex-wrap items-baseline gap-2">
-                    <span className="text-muted-foreground">
-                      {achievement.description}
-                    </span>
-                    {achievement.landingPage && (
-                      <Link
-                        href={achievement.landingPage.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-muted-foreground/70 hover:text-foreground transition-colors"
-                        aria-label={`Visiter ${achievement.landingPage.name} (ouvre dans un nouvel onglet)`}
-                      >
-                        {achievement.landingPage.name} ↗
-                      </Link>
-                    )}
-                  </div>
+          <div className="space-y-4">
+            {experiences.map((experience) => (
+              <div key={experience.company} className="space-y-2">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-sm font-medium">
+                    {experience.company}
+                  </span>
                   <span className="text-xs text-muted-foreground/70">
-                    {achievement.company}
+                    {experience.period.start} -{" "}
+                    {experience.period.end === "Present"
+                      ? "Aujourd'hui"
+                      : experience.period.end}
                   </span>
                 </div>
-              </li>
+                <ul className="space-y-1">
+                  {experience.achievements.map((achievement) => (
+                    <li
+                      key={achievement.id}
+                      className="flex gap-3 text-sm leading-relaxed"
+                    >
+                      <span className="text-muted-foreground/40 flex-shrink-0">
+                        –
+                      </span>
+                      <div className="flex flex-wrap items-baseline gap-2">
+                        <span className="text-muted-foreground">
+                          {achievement.description}
+                        </span>
+                        {achievement.landingPage && (
+                          <Link
+                            href={achievement.landingPage.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-muted-foreground/70 hover:text-foreground transition-colors"
+                            aria-label={`Visiter ${achievement.landingPage.name} (ouvre dans un nouvel onglet)`}
+                          >
+                            {achievement.landingPage.name} ↗
+                          </Link>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
 

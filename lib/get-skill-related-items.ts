@@ -2,11 +2,11 @@ import { experiences } from "@/config/experiences";
 import { projects } from "@/config/projects";
 import { studies } from "@/config/studies";
 import { Skill } from "@/config/skills";
-import { ProjectConfig, Study, AchievementWithCompany } from "@/types";
+import { ProjectConfig, Study, Experience } from "@/types";
 
 export type SkillRelatedItems = {
   projects: ProjectConfig[];
-  achievements: AchievementWithCompany[];
+  experiences: Experience[];
   studies: Study[];
 };
 
@@ -16,18 +16,15 @@ export function getSkillRelatedItems(skill: Skill): SkillRelatedItems {
     .map((id) => projects[id])
     .filter(Boolean);
 
-  // Get related achievements with company info
-  const relatedAchievements = skill.achievementIds.flatMap(
-    ({ company, id }) => {
-      const experience = experiences.find((exp) => exp.company === company);
-      if (!experience) return [];
-
-      const achievement = experience.achievements.find((ach) => ach.id === id);
-      if (!achievement) return [];
-
-      return [{ ...achievement, company }];
-    }
+  // Get related experiences (full experiences, not individual achievements)
+  // Extract unique company names from achievementIds
+  const companyNames = Array.from(
+    new Set(skill.achievementIds.map(({ company }) => company))
   );
+
+  const relatedExperiences = companyNames
+    .map((company) => experiences.find((exp) => exp.company === company))
+    .filter(Boolean) as Experience[];
 
   // Get related studies
   const relatedStudies = skill.studyIds
@@ -36,7 +33,7 @@ export function getSkillRelatedItems(skill: Skill): SkillRelatedItems {
 
   return {
     projects: relatedProjects,
-    achievements: relatedAchievements,
+    experiences: relatedExperiences,
     studies: relatedStudies,
   };
 }
