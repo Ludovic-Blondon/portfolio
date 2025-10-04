@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 export type ProjectConfig = {
+  id: string;
   title: string;
   description: string;
   link?: string;
@@ -40,6 +41,8 @@ export type Achievement = {
     link: string;
   };
 };
+
+export type AchievementWithCompany = Achievement & { company: string };
 
 export type Study = {
   id: string;

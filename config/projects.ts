@@ -2,6 +2,7 @@ import { ProjectConfig } from "@/types";
 
 export const projects: Record<string, ProjectConfig> = {
   nomadhub: {
+    id: "nomadhub",
     title: "NomadHub",
     description:
       "NomadHub est une plateforme d'hébergement de voyageurs. Vous pouvez " +
@@ -27,6 +28,7 @@ export const projects: Record<string, ProjectConfig> = {
     ],
   },
   codehub: {
+    id: "codehub",
     title: "CodeHub",
     description:
       "CodeHub est un site de documentation technique destiné aux développeurs, construit avec " +
@@ -42,6 +44,7 @@ export const projects: Record<string, ProjectConfig> = {
     technologies: ["Next", "Fumadocs", "MDX", "React", "ESlint", "Prettier"],
   },
   argument: {
+    id: "argument",
     title: "Argument",
     description:
       "Argument est une application iOS native conçue pour sauvegarder et organiser vos arguments de " +
