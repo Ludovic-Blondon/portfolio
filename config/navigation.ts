@@ -25,16 +25,20 @@ export const navigation: {
     label: "Mes projets",
     items: [
       {
-        label: "NomadHub",
-        href: "/nomadhub",
+        label: "Argument",
+        href: "/argument",
       },
       {
         label: "CodeHub",
         href: "/codehub",
       },
       {
-        label: "Argument",
-        href: "/argument",
+        label: "NomadHub",
+        href: "/nomadhub",
+      },
+      {
+        label: "Portfolio",
+        href: "/portfolio",
       },
     ],
   },
