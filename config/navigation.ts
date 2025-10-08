@@ -29,6 +29,10 @@ export const navigation: {
         href: "/argument",
       },
       {
+        label: "Cocotte",
+        href: "/cocotte",
+      },
+      {
         label: "CodeHub",
         href: "/codehub",
       },

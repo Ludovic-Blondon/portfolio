@@ -73,4 +73,19 @@ export const projects: Record<string, ProjectConfig> = {
     },
     technologies: ["Next", "React", "TypeScript", "Tailwind", "Shadcn"],
   },
+  cocotte: {
+    id: "cocotte",
+    title: "Cocotte",
+    description:
+      "Cocotte est un site qui regroupe des recettes de cuisine. Conçu pour être clair, concis et intuitif, sans une tonne de publicités " +
+      "qui peuvent gâcher l'expérience utilisateur. Les recettes partagées ont été réalisées à plusieurs reprises et ont pu être ainsi optimisées. " +
+      "Il est construit avec Next.js 15 et Tailwind CSS.",
+    github: "https://github.com/Ludovic-Blondon/cocotte",
+    link: "https://cocotte-alpha.vercel.app",
+    metadata: {
+      title: "Cocotte",
+      description: "Site de recettes de cuisine clair et sans publicité, avec des recettes testées et optimisées.",
+    },
+    technologies: ["Next", "React", "TypeScript", "Tailwind", "Shadcn"],
+  },
 };
