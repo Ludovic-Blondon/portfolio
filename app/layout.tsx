@@ -13,6 +13,7 @@ import { AppBreadcrumb } from "@/components/app-breadcrumb";
 import Link from "next/link";
 import { Github, Linkedin } from "lucide-react";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: {
@@ -100,6 +101,7 @@ export default function RootLayout({
             </SidebarInset>
           </SidebarProvider>
         </ThemeProvider>
+        <SpeedInsights />
         <Analytics />
       </body>
     </html>
