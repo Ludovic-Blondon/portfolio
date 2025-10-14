@@ -9,7 +9,7 @@ export const projects: Record<string, ProjectConfig> = {
       "mettre à disposition des voyageurs, votre salon ou une chambre d'ami. En " +
       "retour, vous pouvez aussi accéder à des hébergements à travers le monde " +
       "grâce à la plateforme.",
-    link: "https://nomadhub-tau.vercel.app/",
+    link: "https://nomadhub.ludovicblondon.fr",
     github: "https://github.com/Ludovic-Blondon/nomadhub",
     metadata: {
       title: "NomadHub",
@@ -34,7 +34,7 @@ export const projects: Record<string, ProjectConfig> = {
       "CodeHub est un site de documentation technique destiné aux développeurs, construit avec " +
       "Fumadocs et Next.js 15. L'objectif est fournir une documentation complète en français sur les outils et raccourcis essentiels pour " +
       "développeurs, avec un accent particulier sur l'écosystème macOS.",
-    link: "https://codehub-sepia.vercel.app/",
+    link: "https://codehub.ludovicblondon.fr",
     github: "https://github.com/Ludovic-Blondon/codehub",
     metadata: {
       title: "CodeHub",
@@ -81,10 +81,11 @@ export const projects: Record<string, ProjectConfig> = {
       "qui peuvent gâcher l'expérience utilisateur. Les recettes partagées ont été réalisées à plusieurs reprises et ont pu être ainsi optimisées. " +
       "Il est construit avec Next.js 15 et Tailwind CSS.",
     github: "https://github.com/Ludovic-Blondon/cocotte",
-    link: "https://cocotte-alpha.vercel.app",
+    link: "https://cocotte.ludovicblondon.fr",
     metadata: {
       title: "Cocotte",
-      description: "Site de recettes de cuisine clair et sans publicité, avec des recettes testées et optimisées.",
+      description:
+        "Site de recettes de cuisine clair et sans publicité, avec des recettes testées et optimisées.",
     },
     technologies: ["Next", "React", "TypeScript", "Tailwind", "Shadcn"],
   },
