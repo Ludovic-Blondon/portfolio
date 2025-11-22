@@ -33,6 +33,10 @@ export const navigation: {
         href: "/cocotte",
       },
       {
+        label: "Galerie",
+        href: "/galerie",
+      },
+      {
         label: "CodeHub",
         href: "/codehub",
       },
