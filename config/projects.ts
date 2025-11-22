@@ -89,4 +89,26 @@ export const projects: Record<string, ProjectConfig> = {
     },
     technologies: ["Next", "React", "TypeScript", "Tailwind", "Shadcn"],
   },
+  galerie: {
+    id: "galerie",
+    title: "Galerie",
+    description:
+      "Galerie est une plateforme web de galerie d'art moderne construite avec Laravel 12 et Vue 3. L'application combine une architecture backend robuste (PHP 8.2+, Laravel Fortify pour l'authentification avec 2FA) avec un frontend moderne (Vue 3, TypeScript, Inertia.js) pour offrir une expérience utilisateur fluide et élégante. Utilisant Tailwind CSS v4 et shadcn-vue pour le design, le projet illustre la maîtrise du développement full-stack avec SSR, tests automatisés (Pest PHP) et une architecture modulaire permettant la gestion et l'exposition d'œuvres d'art contemporaines.",
+    github: "https://github.com/Ludovic-Blondon/galerie",
+    link: "https://galerie-staging-rsv5xd.laravel.cloud/",
+    metadata: {
+      title: "Galerie",
+      description:
+        "Plateforme web de galerie d'art moderne construite avec Laravel 12 et Vue 3.",
+    },
+    technologies: [
+      "Laravel",
+      "PHP",
+      "Vue",
+      "TypeScript",
+      "Inertia.js",
+      "Tailwind",
+      "Pest",
+    ],
+  },
 };
