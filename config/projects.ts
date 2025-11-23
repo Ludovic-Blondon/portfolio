@@ -62,14 +62,14 @@ export const projects: Record<string, ProjectConfig> = {
     id: "portfolio",
     title: "Portfolio",
     description:
-      "J'ai bien sûr également réalisé ce portfolio. J'ai utilisé des technologies modernes comme Next.js 15, Shadcn/ui et Tailwind CSS 4. " +
+      "J'ai bien sûr également réalisé ce portfolio. J'ai utilisé des technologies modernes comme Next.js 16, Shadcn/ui et Tailwind CSS 4. " +
       "J'ai voulu créer un design minimaliste et épuré pour mettre en valeur mes projets et compétences. " +
       "Le site intègre un système de thèmes (dark/light mode) et une architecture modulaire pour faciliter les futures évolutions.",
     github: "https://github.com/Ludovic-Blondon/portfolio",
     metadata: {
       title: "Portfolio",
       description:
-        "Portfolio personnel construit avec Next.js 15 et Tailwind CSS.",
+        "Portfolio personnel construit avec Next.js 16 et Tailwind CSS.",
     },
     technologies: ["Next", "React", "TypeScript", "Tailwind", "Shadcn"],
   },
