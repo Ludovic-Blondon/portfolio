@@ -13,17 +13,6 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       title: "NomadHub",
       description: "NomadHub est une plateforme d'hébergement de voyageurs.",
     },
-    technologies: [
-      "Next",
-      "Shadcn",
-      "Better-auth",
-      "Tailwind",
-      "TypeScript",
-      "JavaScript",
-      "React",
-      "ESLint",
-      "Prettier",
-    ],
     order: 1,
   },
   codehub: {
@@ -38,7 +27,6 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "CodeHub est un site de documentation technique destiné aux développeurs.",
     },
-    technologies: ["Next", "Fumadocs", "MDX", "React", "ESLint", "Prettier"],
     order: 2,
   },
   argument: {
@@ -52,7 +40,6 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Application iOS pour sauvegarder et organiser vos arguments de débat.",
     },
-    technologies: ["Swift"],
     order: 3,
   },
   portfolio: {
@@ -66,7 +53,6 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Portfolio personnel construit avec Next.js 16 et Tailwind CSS.",
     },
-    technologies: ["Next", "React", "TypeScript", "Tailwind", "Shadcn"],
     order: 4,
   },
   cocotte: {
@@ -81,7 +67,6 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Site de recettes de cuisine clair et sans publicité, avec des recettes testées et optimisées.",
     },
-    technologies: ["Next", "React", "TypeScript", "Tailwind", "Shadcn"],
     order: 5,
   },
   galerie: {
@@ -94,15 +79,6 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Plateforme web de galerie d'art moderne construite avec Laravel 12 et Vue 3.",
     },
-    technologies: [
-      "Laravel",
-      "PHP",
-      "Vue",
-      "TypeScript",
-      "Inertia.js",
-      "Tailwind",
-      "Pest",
-    ],
     order: 6,
   },
   "diag-adresse": {
@@ -114,7 +90,6 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Diagnostic complet d'une adresse française : risques, eau, performance énergétique.",
     },
-    technologies: ["Next", "React", "TypeScript", "Tailwind"],
   },
   "block-puzzle-blast": {
     title: "Block Puzzle Blast",
@@ -125,7 +100,6 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Jeu de puzzle mobile iOS/Android construit avec React Native et Expo.",
     },
-    technologies: ["React Native", "Expo", "TypeScript", "Zustand"],
   },
   casemorph: {
     title: "Casemorph",
@@ -137,7 +111,6 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Bibliothèque TypeScript pour convertir les conventions de nommage des clés d'objets, avec inférence de types complète.",
     },
-    technologies: ["TypeScript"],
   },
   "ts-safe-path": {
     title: "ts-safe-path",
@@ -149,7 +122,6 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Accès type-safe aux propriétés imbriquées en TypeScript, avec inférence complète et autocomplétion.",
     },
-    technologies: ["TypeScript"],
   },
   "durations-ts": {
     title: "durations-ts",
@@ -161,6 +133,5 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Parsing de durées TypeScript avec validation à la compilation et zéro dépendance.",
     },
-    technologies: ["TypeScript"],
   },
 };

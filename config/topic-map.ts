@@ -26,6 +26,11 @@ export const topicDisplayMap: Record<string, string> = {
   nestjs: "NestJS",
   nodejs: "Node.js",
   "node-js": "Node.js",
+  "react-native": "React Native",
+  expo: "Expo",
+  zustand: "Zustand",
+  ios: "iOS",
+  android: "Android",
 };
 
 export function mapTopicsToTechnologies(topics: string[]): string[] {

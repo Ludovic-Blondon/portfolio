@@ -1,68 +1,51 @@
 {
-  "generated_at": "2026-04-18T15:27:36.460Z",
+  "generated_at": "2026-04-18T16:06:01.260Z",
   "projects": [
     {
-      "id": "diag-adresse",
-      "name": "diag-adresse",
+      "id": "argument",
+      "name": "Argument",
       "description": null,
-      "html_url": "https://github.com/Ludovic-Blondon/diag-adresse",
-      "homepage": "https://diag-adresse.vercel.app",
-      "topics": [],
-      "updated_at": "2026-04-12T15:00:20Z"
+      "html_url": "https://github.com/Ludovic-Blondon/Argument",
+      "homepage": "",
+      "topics": [
+        "ios",
+        "swift",
+        "swiftui"
+      ],
+      "updated_at": "2026-04-18T16:05:35Z"
     },
     {
-      "id": "block-puzzle-blast",
-      "name": "block-puzzle-blast",
+      "id": "galerie",
+      "name": "galerie",
       "description": null,
-      "html_url": "https://github.com/Ludovic-Blondon/block-puzzle-blast",
-      "homepage": null,
-      "topics": [],
-      "updated_at": "2026-03-29T18:21:19Z"
+      "html_url": "https://github.com/Ludovic-Blondon/galerie",
+      "homepage": "",
+      "topics": [
+        "inertiajs",
+        "laravel",
+        "pest",
+        "php",
+        "shadcn-vue",
+        "tailwindcss",
+        "typescript",
+        "vue"
+      ],
+      "updated_at": "2026-04-18T16:04:54Z"
     },
     {
-      "id": "casemorph",
-      "name": "casemorph",
-      "description": "Type-safe deep case transformation for objects — snake_case, camelCase, kebab-case, PascalCase, CONSTANT_CASE with full TypeScript inference",
-      "html_url": "https://github.com/Ludovic-Blondon/casemorph",
-      "homepage": null,
-      "topics": [],
-      "updated_at": "2026-03-28T20:16:58Z"
-    },
-    {
-      "id": "ts-safe-path",
-      "name": "ts-safe-path",
-      "description": "Type-safe deep property access with full path inference and autocomplete. Zero dependencies.",
-      "html_url": "https://github.com/Ludovic-Blondon/ts-safe-path",
-      "homepage": null,
-      "topics": [],
-      "updated_at": "2026-03-27T19:06:46Z"
-    },
-    {
-      "id": "durations-ts",
-      "name": "durations-ts",
-      "description": "Type-safe duration parsing with compile-time validation. Parse '2h 30m' to milliseconds with zero dependencies.",
-      "html_url": "https://github.com/Ludovic-Blondon/durations-ts",
-      "homepage": null,
-      "topics": [],
-      "updated_at": "2026-03-27T07:16:12Z"
-    },
-    {
-      "id": "nomadhub",
-      "name": "nomadhub",
+      "id": "portfolio",
+      "name": "portfolio",
       "description": null,
-      "html_url": "https://github.com/Ludovic-Blondon/nomadhub",
-      "homepage": "https://nomadhub-tau.vercel.app",
-      "topics": [],
-      "updated_at": "2025-12-22T10:42:29Z"
-    },
-    {
-      "id": "codehub",
-      "name": "codehub",
-      "description": null,
-      "html_url": "https://github.com/Ludovic-Blondon/codehub",
-      "homepage": "https://codehub-sepia.vercel.app",
-      "topics": [],
-      "updated_at": "2025-12-22T10:20:17Z"
+      "html_url": "https://github.com/Ludovic-Blondon/portfolio",
+      "homepage": "https://www.ludovicblondon.fr",
+      "topics": [
+        "nextjs",
+        "react",
+        "shadcn",
+        "tailwindcss",
+        "typescript"
+      ],
+      "updated_at": "2026-04-18T16:03:39Z"
     },
     {
       "id": "cocotte",
@@ -70,35 +53,122 @@
       "description": null,
       "html_url": "https://github.com/Ludovic-Blondon/cocotte",
       "homepage": "https://cocotte-alpha.vercel.app",
-      "topics": [],
-      "updated_at": "2025-12-22T09:25:35Z"
+      "topics": [
+        "nextjs",
+        "react",
+        "shadcn",
+        "tailwindcss",
+        "typescript"
+      ],
+      "updated_at": "2026-04-18T16:02:39Z"
     },
     {
-      "id": "portfolio",
-      "name": "portfolio",
+      "id": "codehub",
+      "name": "codehub",
       "description": null,
-      "html_url": "https://github.com/Ludovic-Blondon/portfolio",
-      "homepage": "https://portfolio-olive-five-40.vercel.app",
-      "topics": [],
-      "updated_at": "2025-12-22T09:10:28Z"
+      "html_url": "https://github.com/Ludovic-Blondon/codehub",
+      "homepage": "https://codehub-sepia.vercel.app",
+      "topics": [
+        "eslint",
+        "fumadocs",
+        "mdx",
+        "nextjs",
+        "prettier",
+        "react",
+        "typescript"
+      ],
+      "updated_at": "2026-04-18T16:01:46Z"
     },
     {
-      "id": "galerie",
-      "name": "galerie",
+      "id": "nomadhub",
+      "name": "nomadhub",
       "description": null,
-      "html_url": "https://github.com/Ludovic-Blondon/galerie",
-      "homepage": null,
-      "topics": [],
-      "updated_at": "2025-11-16T20:54:21Z"
+      "html_url": "https://github.com/Ludovic-Blondon/nomadhub",
+      "homepage": "https://nomadhub-tau.vercel.app",
+      "topics": [
+        "better-auth",
+        "eslint",
+        "nextjs",
+        "prettier",
+        "react",
+        "shadcn",
+        "tailwindcss",
+        "typescript"
+      ],
+      "updated_at": "2026-04-18T16:00:44Z"
     },
     {
-      "id": "argument",
-      "name": "Argument",
+      "id": "durations-ts",
+      "name": "durations-ts",
+      "description": "Type-safe duration parsing with compile-time validation. Parse '2h 30m' to milliseconds with zero dependencies.",
+      "html_url": "https://github.com/Ludovic-Blondon/durations-ts",
+      "homepage": "",
+      "topics": [
+        "library",
+        "npm-package",
+        "typescript",
+        "zero-dependencies"
+      ],
+      "updated_at": "2026-04-18T15:59:37Z"
+    },
+    {
+      "id": "ts-safe-path",
+      "name": "ts-safe-path",
+      "description": "Type-safe deep property access with full path inference and autocomplete. Zero dependencies.",
+      "html_url": "https://github.com/Ludovic-Blondon/ts-safe-path",
+      "homepage": "",
+      "topics": [
+        "library",
+        "npm-package",
+        "typescript",
+        "zero-dependencies"
+      ],
+      "updated_at": "2026-04-18T15:59:08Z"
+    },
+    {
+      "id": "casemorph",
+      "name": "casemorph",
+      "description": "Type-safe deep case transformation for objects — snake_case, camelCase, kebab-case, PascalCase, CONSTANT_CASE with full TypeScript inference",
+      "html_url": "https://github.com/Ludovic-Blondon/casemorph",
+      "homepage": "",
+      "topics": [
+        "library",
+        "npm-package",
+        "typescript",
+        "zero-dependency"
+      ],
+      "updated_at": "2026-04-18T15:58:31Z"
+    },
+    {
+      "id": "block-puzzle-blast",
+      "name": "block-puzzle-blast",
       "description": null,
-      "html_url": "https://github.com/Ludovic-Blondon/Argument",
-      "homepage": null,
-      "topics": [],
-      "updated_at": "2025-09-24T18:06:32Z"
+      "html_url": "https://github.com/Ludovic-Blondon/block-puzzle-blast",
+      "homepage": "",
+      "topics": [
+        "android",
+        "expo",
+        "ios",
+        "mobile",
+        "react-native",
+        "typescript",
+        "zustand"
+      ],
+      "updated_at": "2026-04-18T15:57:34Z"
+    },
+    {
+      "id": "diag-adresse",
+      "name": "diag-adresse",
+      "description": null,
+      "html_url": "https://github.com/Ludovic-Blondon/diag-adresse",
+      "homepage": "https://diag-adresse.vercel.app",
+      "topics": [
+        "nextjs",
+        "react",
+        "tailwindcss",
+        "typescript"
+      ],
+      "updated_at": "2026-04-18T15:56:31Z"
     }
   ]
 }

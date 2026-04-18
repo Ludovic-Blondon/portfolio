@@ -26,7 +26,7 @@ function buildProject(repo: GitHubProjectData): ProjectConfig {
     id: repo.id,
     title,
     description,
-    link: override?.link ?? repo.homepage ?? undefined,
+    link: override?.link || repo.homepage || undefined,
     npm: override?.npm,
     github: override?.github ?? repo.html_url,
     metadata: {
