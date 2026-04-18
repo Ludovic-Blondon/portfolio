@@ -17,7 +17,9 @@ export default function CareerPage() {
 
       <Timeline>
         {experiences.map((experience) => (
-          <TimelineItem key={`${experience.company}-${experience.period.start}`}>
+          <TimelineItem
+            key={`${experience.company}-${experience.period.start}`}
+          >
             <TimelineHeader
               title={experience.company}
               subtitle={`${experience.period.start} - ${
@@ -58,7 +60,7 @@ export default function CareerPage() {
             </ul>
 
             {/* Technologies */}
-            <div className="flex flex-wrap gap-2 text-xs text-muted-foreground/70">
+            <div className="text-muted-foreground/70 flex flex-wrap gap-2 text-xs">
               {experience.technologies.map((tech) => (
                 <span key={tech}>{tech}</span>
               ))}

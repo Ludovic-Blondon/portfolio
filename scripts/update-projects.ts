@@ -51,7 +51,7 @@ function logRateLimit(response: Response): void {
       ? new Date(Number(reset) * 1000).toISOString()
       : "unknown";
     console.log(
-      `  ↳ Rate limit: ${remaining}/${limit} remaining (resets at ${resetDate})`
+      `  ↳ Rate limit: ${remaining}/${limit} remaining (resets at ${resetDate})`,
     );
   }
 }
@@ -65,7 +65,7 @@ async function fetchRepos(): Promise<GitHubRepo[]> {
 
   if (!response.ok) {
     throw new Error(
-      `GitHub API request failed: ${response.status} ${response.statusText}`
+      `GitHub API request failed: ${response.status} ${response.statusText}`,
     );
   }
 
@@ -75,7 +75,7 @@ async function fetchRepos(): Promise<GitHubRepo[]> {
 async function main(): Promise<void> {
   if (!process.env.GITHUB_TOKEN) {
     console.warn(
-      "⚠️  No GITHUB_TOKEN set — using unauthenticated quota (60 req/h)."
+      "⚠️  No GITHUB_TOKEN set — using unauthenticated quota (60 req/h).",
     );
   }
 
@@ -83,10 +83,10 @@ async function main(): Promise<void> {
   console.log(`Found ${repos.length} repos owned by ${GITHUB_USER}`);
 
   const publicRepos = repos.filter(
-    (repo) => !repo.private && !repo.fork && !repo.archived
+    (repo) => !repo.private && !repo.fork && !repo.archived,
   );
   console.log(
-    `Filtered to ${publicRepos.length} public repos (excluding forks and archived)`
+    `Filtered to ${publicRepos.length} public repos (excluding forks and archived)`,
   );
 
   const projects: GeneratedProject[] = publicRepos
@@ -101,7 +101,7 @@ async function main(): Promise<void> {
     }))
     .sort(
       (a, b) =>
-        new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+        new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
     );
 
   const output = {

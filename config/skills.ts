@@ -55,7 +55,7 @@ function buildSkills(): Skill[] {
 
   // Convert to array and sort by name
   return Array.from(skillsMap.values()).sort((a, b) =>
-    a.name.localeCompare(b.name)
+    a.name.localeCompare(b.name),
   );
 }
 

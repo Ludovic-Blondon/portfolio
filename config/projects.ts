@@ -50,5 +50,5 @@ const orderedRepos = [...data.projects].sort((a, b) => {
 });
 
 export const projects: Record<string, ProjectConfig> = Object.fromEntries(
-  orderedRepos.map((repo) => [repo.id, buildProject(repo)])
+  orderedRepos.map((repo) => [repo.id, buildProject(repo)]),
 );

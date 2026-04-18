@@ -35,7 +35,7 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
         <h2 className="text-xl font-medium">{skill.name}</h2>
         <button
           onClick={onClose}
-          className="text-xs text-muted-foreground/70 hover:text-foreground transition-colors"
+          className="text-muted-foreground/70 hover:text-foreground text-xs transition-colors"
           aria-label="Fermer"
         >
           Fermer ✕
@@ -45,7 +45,7 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
       {/* Projects */}
       {projects.length > 0 && (
         <div className="space-y-3">
-          <h3 className="text-sm font-medium text-muted-foreground">
+          <h3 className="text-muted-foreground text-sm font-medium">
             Projets personnels
           </h3>
           <ul className="space-y-4">
@@ -53,7 +53,7 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
               <li key={project.id} className="space-y-1">
                 <div className="flex items-baseline gap-2">
                   <span className="text-sm font-medium">{project.title}</span>
-                  <div className="flex gap-2 text-xs text-muted-foreground/70">
+                  <div className="text-muted-foreground/70 flex gap-2 text-xs">
                     {project.link && (
                       <Link
                         href={project.link}
@@ -76,7 +76,7 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
                     </Link>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {project.description}
                 </p>
               </li>
@@ -88,7 +88,7 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
       {/* Experiences */}
       {experiences.length > 0 && (
         <div className="space-y-3">
-          <h3 className="text-sm font-medium text-muted-foreground">
+          <h3 className="text-muted-foreground text-sm font-medium">
             Expériences professionnelles
           </h3>
           <div className="space-y-4">
@@ -98,7 +98,7 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
                   <span className="text-sm font-medium">
                     {experience.company}
                   </span>
-                  <span className="text-xs text-muted-foreground/70">
+                  <span className="text-muted-foreground/70 text-xs">
                     {experience.period.start} -{" "}
                     {experience.period.end === "Present"
                       ? "Aujourd'hui"
@@ -123,7 +123,7 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
                             href={achievement.landingPage.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs text-muted-foreground/70 hover:text-foreground transition-colors"
+                            className="text-muted-foreground/70 hover:text-foreground text-xs transition-colors"
                             aria-label={`Visiter ${achievement.landingPage.name} (ouvre dans un nouvel onglet)`}
                           >
                             {achievement.landingPage.name} ↗
@@ -142,7 +142,7 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
       {/* Studies */}
       {studies.length > 0 && (
         <div className="space-y-3">
-          <h3 className="text-sm font-medium text-muted-foreground">
+          <h3 className="text-muted-foreground text-sm font-medium">
             Formations
           </h3>
           <ul className="space-y-4">
@@ -150,7 +150,7 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
               <li key={study.id} className="space-y-2">
                 <div className="flex items-baseline gap-2">
                   <span className="text-sm font-medium">{study.title}</span>
-                  <span className="text-xs text-muted-foreground/70">
+                  <span className="text-muted-foreground/70 text-xs">
                     {study.year}
                   </span>
                 </div>

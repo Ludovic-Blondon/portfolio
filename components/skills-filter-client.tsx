@@ -30,7 +30,7 @@ export function SkillsFilterClient({ skills }: SkillsFilterClientProps) {
 
   const filteredSkills = filter
     ? skills.filter((skill) =>
-        skill.name.toLowerCase().includes(filter.toLowerCase())
+        skill.name.toLowerCase().includes(filter.toLowerCase()),
       )
     : skills;
 
@@ -48,12 +48,12 @@ export function SkillsFilterClient({ skills }: SkillsFilterClientProps) {
       </div>
 
       {filteredSkills.length > 0 ? (
-        <div className="flex flex-wrap gap-2 text-sm text-muted-foreground/70">
+        <div className="text-muted-foreground/70 flex flex-wrap gap-2 text-sm">
           {filteredSkills.map((skill) => (
             <button
               key={skill.name}
               onClick={() => setSelectedSkill(skill)}
-              className={`hover:text-foreground transition-colors cursor-pointer ${
+              className={`hover:text-foreground cursor-pointer transition-colors ${
                 selectedSkill?.name === skill.name
                   ? "text-foreground font-medium"
                   : ""
@@ -64,7 +64,7 @@ export function SkillsFilterClient({ skills }: SkillsFilterClientProps) {
           ))}
         </div>
       ) : (
-        <p className="text-sm text-muted-foreground/70">
+        <p className="text-muted-foreground/70 text-sm">
           Aucune technologie ne correspond à votre recherche.
         </p>
       )}
