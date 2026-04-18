@@ -1,114 +1,54 @@
-import { ProjectConfig } from "@/types";
+import generated from "@/lib/generated/projects.json";
+import {
+  GeneratedProjectsData,
+  GitHubProjectData,
+  ProjectConfig,
+} from "@/types";
+import { projectOverrides } from "./project-overrides";
+import { mapTopicsToTechnologies } from "./topic-map";
 
-export const projects: Record<string, ProjectConfig> = {
-  nomadhub: {
-    id: "nomadhub",
-    title: "NomadHub",
-    description:
-      "NomadHub est une plateforme d'hébergement de voyageurs. Vous pouvez " +
-      "mettre à disposition des voyageurs, votre salon ou une chambre d'ami. En " +
-      "retour, vous pouvez aussi accéder à des hébergements à travers le monde " +
-      "grâce à la plateforme.",
-    link: "https://nomadhub.ludovicblondon.fr",
-    github: "https://github.com/Ludovic-Blondon/nomadhub",
+const data = generated as GeneratedProjectsData;
+
+const FALLBACK_DESCRIPTION = "Description à venir prochainement.";
+
+function toTitle(name: string): string {
+  return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
+function buildProject(repo: GitHubProjectData): ProjectConfig {
+  const override = projectOverrides[repo.id];
+  const title = override?.title ?? toTitle(repo.name);
+  const description =
+    override?.description ?? repo.description ?? FALLBACK_DESCRIPTION;
+  const derivedTechnologies = mapTopicsToTechnologies(repo.topics);
+
+  return {
+    id: repo.id,
+    title,
+    description,
+    link: override?.link ?? repo.homepage ?? undefined,
+    npm: override?.npm,
+    github: override?.github ?? repo.html_url,
     metadata: {
-      title: "NomadHub",
-      description: "NomadHub est une plateforme d'hébergement de voyageurs.",
+      title,
+      description,
+      ...override?.metadata,
     },
-    technologies: [
-      "Next",
-      "Shadcn",
-      "Better-auth",
-      "Tailwind",
-      "TypeScript",
-      "JavaScript",
-      "React",
-      "ESLint",
-      "Prettier",
-    ],
-  },
-  codehub: {
-    id: "codehub",
-    title: "CodeHub",
-    description:
-      "CodeHub est un site de documentation technique destiné aux développeurs, construit avec " +
-      "Fumadocs et Next.js 15. L'objectif est fournir une documentation complète en français sur les outils et raccourcis essentiels pour " +
-      "développeurs, avec un accent particulier sur l'écosystème macOS.",
-    link: "https://codehub.ludovicblondon.fr",
-    github: "https://github.com/Ludovic-Blondon/codehub",
-    metadata: {
-      title: "CodeHub",
-      description:
-        "CodeHub est un site de documentation technique destiné aux développeurs.",
-    },
-    technologies: ["Next", "Fumadocs", "MDX", "React", "ESLint", "Prettier"],
-  },
-  argument: {
-    id: "argument",
-    title: "Argument",
-    description:
-      "Argument est une application iOS native conçue pour sauvegarder et organiser vos arguments de " +
-      "débat sous forme de notes structurées. Elle vous permet d'archiver vos idées, de les " +
-      "retrouver rapidement par thème, et de les copier-coller lors de discussions.",
-    github: "https://github.com/Ludovic-Blondon/argument",
-    metadata: {
-      title: "Argument",
-      description:
-        "Application iOS pour sauvegarder et organiser vos arguments de débat.",
-    },
-    technologies: ["Swift"],
-  },
-  portfolio: {
-    id: "portfolio",
-    title: "Portfolio",
-    description:
-      "J'ai bien sûr également réalisé ce portfolio. J'ai utilisé des technologies modernes comme Next.js 16, Shadcn/ui et Tailwind CSS 4. " +
-      "J'ai voulu créer un design minimaliste et épuré pour mettre en valeur mes projets et compétences. " +
-      "Le site intègre un système de thèmes (dark/light mode) et une architecture modulaire pour faciliter les futures évolutions.",
-    github: "https://github.com/Ludovic-Blondon/portfolio",
-    metadata: {
-      title: "Portfolio",
-      description:
-        "Portfolio personnel construit avec Next.js 16 et Tailwind CSS.",
-    },
-    technologies: ["Next", "React", "TypeScript", "Tailwind", "Shadcn"],
-  },
-  cocotte: {
-    id: "cocotte",
-    title: "Cocotte",
-    description:
-      "Cocotte est un site qui regroupe des recettes de cuisine. Conçu pour être clair, concis et intuitif, sans une tonne de publicités " +
-      "qui peuvent gâcher l'expérience utilisateur. Les recettes partagées ont été réalisées à plusieurs reprises et ont pu être ainsi optimisées. " +
-      "Il est construit avec Next.js 15 et Tailwind CSS.",
-    github: "https://github.com/Ludovic-Blondon/cocotte",
-    link: "https://cocotte.ludovicblondon.fr",
-    metadata: {
-      title: "Cocotte",
-      description:
-        "Site de recettes de cuisine clair et sans publicité, avec des recettes testées et optimisées.",
-    },
-    technologies: ["Next", "React", "TypeScript", "Tailwind", "Shadcn"],
-  },
-  galerie: {
-    id: "galerie",
-    title: "Galerie",
-    description:
-      "Galerie est une plateforme web de galerie d'art moderne construite avec Laravel 12 et Vue 3. L'application combine une architecture backend robuste (PHP 8.2+, Laravel Fortify pour l'authentification avec 2FA) avec un frontend moderne (Vue 3, TypeScript, Inertia.js) pour offrir une expérience utilisateur fluide et élégante. Utilisant Tailwind CSS v4 et shadcn-vue pour le design, le projet illustre la maîtrise du développement full-stack avec SSR, tests automatisés (Pest PHP) et une architecture modulaire permettant la gestion et l'exposition d'œuvres d'art contemporaines.",
-    github: "https://github.com/Ludovic-Blondon/galerie",
-    link: "https://galerie-staging-rsv5xd.laravel.cloud/",
-    metadata: {
-      title: "Galerie",
-      description:
-        "Plateforme web de galerie d'art moderne construite avec Laravel 12 et Vue 3.",
-    },
-    technologies: [
-      "Laravel",
-      "PHP",
-      "Vue",
-      "TypeScript",
-      "Inertia.js",
-      "Tailwind",
-      "Pest",
-    ],
-  },
-};
+    technologies: override?.technologies ?? derivedTechnologies,
+  };
+}
+
+const orderedRepos = [...data.projects].sort((a, b) => {
+  const orderA = projectOverrides[a.id]?.order;
+  const orderB = projectOverrides[b.id]?.order;
+
+  if (orderA !== undefined && orderB !== undefined) return orderA - orderB;
+  if (orderA !== undefined) return -1;
+  if (orderB !== undefined) return 1;
+
+  return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+});
+
+export const projects: Record<string, ProjectConfig> = Object.fromEntries(
+  orderedRepos.map((repo) => [repo.id, buildProject(repo)])
+);

@@ -24,6 +24,17 @@ export function ProjectCard({ project }: { project: ProjectConfig }) {
               Visiter le site ↗
             </Link>
           )}
+          {project.npm && (
+            <Link
+              href={project.npm}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+              aria-label={`Voir le package npm ${project.title}`}
+            >
+              npm ↗
+            </Link>
+          )}
           <Link
             href={project.github}
             target="_blank"
