@@ -19,7 +19,7 @@ export function getSkillRelatedItems(skill: Skill): SkillRelatedItems {
   // Get related experiences (full experiences, not individual achievements)
   // Extract unique company names from achievementIds
   const companyNames = Array.from(
-    new Set(skill.achievementIds.map(({ company }) => company))
+    new Set(skill.achievementIds.map(({ company }) => company)),
   );
 
   const relatedExperiences = companyNames

@@ -19,7 +19,7 @@ export function AppBreadcrumb() {
   const navigationMap = useMemo(() => {
     const map = new Map<string, string>();
     [...navigation.navProjects.items, ...navigation.navAbout.items].forEach(
-      (item) => map.set(item.href, item.label)
+      (item) => map.set(item.href, item.label),
     );
     return map;
   }, []);

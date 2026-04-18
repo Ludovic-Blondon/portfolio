@@ -63,7 +63,7 @@ export function SkillsFilter({
           role="combobox"
           aria-expanded={open}
           aria-label="Filtrer les technologies"
-          className="w-full justify-between text-sm text-muted-foreground font-normal h-9"
+          className="text-muted-foreground h-9 w-full justify-between text-sm font-normal"
         >
           <span>{displayValue}</span>
           <div className="flex items-center gap-2">
@@ -73,14 +73,14 @@ export function SkillsFilter({
                   e.stopPropagation();
                   onValueChange("");
                 }}
-                className="flex h-4 w-4 items-center justify-center rounded-sm hover:bg-muted cursor-pointer"
+                className="hover:bg-muted flex h-4 w-4 cursor-pointer items-center justify-center rounded-sm"
                 role="button"
                 aria-label="Réinitialiser le filtre"
               >
                 <X className="h-3 w-3" />
               </div>
             )}
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+            <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
               {isMac ? <span className="text-xs">⌘</span> : "Ctrl+"}K
             </kbd>
           </div>
@@ -93,7 +93,7 @@ export function SkillsFilter({
         <Command>
           <CommandInput placeholder={PLACEHOLDER_TEXT} className="text-sm" />
           <CommandList>
-            <CommandEmpty className="text-sm text-muted-foreground py-6 text-center">
+            <CommandEmpty className="text-muted-foreground py-6 text-center text-sm">
               {EMPTY_TEXT}
             </CommandEmpty>
             <CommandGroup>
@@ -114,7 +114,7 @@ export function SkillsFilter({
                       "mr-2 h-4 w-4",
                       value.toLowerCase() === skill.toLowerCase()
                         ? "opacity-100"
-                        : "opacity-0"
+                        : "opacity-0",
                     )}
                   />
                   {skill}

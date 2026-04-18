@@ -1,0 +1,174 @@
+{
+  "generated_at": "2026-04-18T16:06:01.260Z",
+  "projects": [
+    {
+      "id": "argument",
+      "name": "Argument",
+      "description": null,
+      "html_url": "https://github.com/Ludovic-Blondon/Argument",
+      "homepage": "",
+      "topics": [
+        "ios",
+        "swift",
+        "swiftui"
+      ],
+      "updated_at": "2026-04-18T16:05:35Z"
+    },
+    {
+      "id": "galerie",
+      "name": "galerie",
+      "description": null,
+      "html_url": "https://github.com/Ludovic-Blondon/galerie",
+      "homepage": "",
+      "topics": [
+        "inertiajs",
+        "laravel",
+        "pest",
+        "php",
+        "shadcn-vue",
+        "tailwindcss",
+        "typescript",
+        "vue"
+      ],
+      "updated_at": "2026-04-18T16:04:54Z"
+    },
+    {
+      "id": "portfolio",
+      "name": "portfolio",
+      "description": null,
+      "html_url": "https://github.com/Ludovic-Blondon/portfolio",
+      "homepage": "https://www.ludovicblondon.fr",
+      "topics": [
+        "nextjs",
+        "react",
+        "shadcn",
+        "tailwindcss",
+        "typescript"
+      ],
+      "updated_at": "2026-04-18T16:03:39Z"
+    },
+    {
+      "id": "cocotte",
+      "name": "cocotte",
+      "description": null,
+      "html_url": "https://github.com/Ludovic-Blondon/cocotte",
+      "homepage": "https://cocotte-alpha.vercel.app",
+      "topics": [
+        "nextjs",
+        "react",
+        "shadcn",
+        "tailwindcss",
+        "typescript"
+      ],
+      "updated_at": "2026-04-18T16:02:39Z"
+    },
+    {
+      "id": "codehub",
+      "name": "codehub",
+      "description": null,
+      "html_url": "https://github.com/Ludovic-Blondon/codehub",
+      "homepage": "https://codehub-sepia.vercel.app",
+      "topics": [
+        "eslint",
+        "fumadocs",
+        "mdx",
+        "nextjs",
+        "prettier",
+        "react",
+        "typescript"
+      ],
+      "updated_at": "2026-04-18T16:01:46Z"
+    },
+    {
+      "id": "nomadhub",
+      "name": "nomadhub",
+      "description": null,
+      "html_url": "https://github.com/Ludovic-Blondon/nomadhub",
+      "homepage": "https://nomadhub-tau.vercel.app",
+      "topics": [
+        "better-auth",
+        "eslint",
+        "nextjs",
+        "prettier",
+        "react",
+        "shadcn",
+        "tailwindcss",
+        "typescript"
+      ],
+      "updated_at": "2026-04-18T16:00:44Z"
+    },
+    {
+      "id": "durations-ts",
+      "name": "durations-ts",
+      "description": "Type-safe duration parsing with compile-time validation. Parse '2h 30m' to milliseconds with zero dependencies.",
+      "html_url": "https://github.com/Ludovic-Blondon/durations-ts",
+      "homepage": "",
+      "topics": [
+        "library",
+        "npm-package",
+        "typescript",
+        "zero-dependencies"
+      ],
+      "updated_at": "2026-04-18T15:59:37Z"
+    },
+    {
+      "id": "ts-safe-path",
+      "name": "ts-safe-path",
+      "description": "Type-safe deep property access with full path inference and autocomplete. Zero dependencies.",
+      "html_url": "https://github.com/Ludovic-Blondon/ts-safe-path",
+      "homepage": "",
+      "topics": [
+        "library",
+        "npm-package",
+        "typescript",
+        "zero-dependencies"
+      ],
+      "updated_at": "2026-04-18T15:59:08Z"
+    },
+    {
+      "id": "casemorph",
+      "name": "casemorph",
+      "description": "Type-safe deep case transformation for objects — snake_case, camelCase, kebab-case, PascalCase, CONSTANT_CASE with full TypeScript inference",
+      "html_url": "https://github.com/Ludovic-Blondon/casemorph",
+      "homepage": "",
+      "topics": [
+        "library",
+        "npm-package",
+        "typescript",
+        "zero-dependency"
+      ],
+      "updated_at": "2026-04-18T15:58:31Z"
+    },
+    {
+      "id": "block-puzzle-blast",
+      "name": "block-puzzle-blast",
+      "description": null,
+      "html_url": "https://github.com/Ludovic-Blondon/block-puzzle-blast",
+      "homepage": "",
+      "topics": [
+        "android",
+        "expo",
+        "ios",
+        "mobile",
+        "react-native",
+        "typescript",
+        "zustand"
+      ],
+      "updated_at": "2026-04-18T15:57:34Z"
+    },
+    {
+      "id": "diag-adresse",
+      "name": "diag-adresse",
+      "description": null,
+      "html_url": "https://github.com/Ludovic-Blondon/diag-adresse",
+      "homepage": "https://diag-adresse.vercel.app",
+      "topics": [
+        "nextjs",
+        "react",
+        "tailwindcss",
+        "typescript"
+      ],
+      "updated_at": "2026-04-18T15:56:31Z"
+    }
+  ]
+}

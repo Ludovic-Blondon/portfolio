@@ -5,9 +5,29 @@ export type ProjectConfig = {
   title: string;
   description: string;
   link?: string;
+  npm?: string;
   github: string;
   metadata: Metadata;
   technologies: string[];
+};
+
+export type GitHubProjectData = {
+  id: string;
+  name: string;
+  description: string | null;
+  html_url: string;
+  homepage: string | null;
+  topics: string[];
+  updated_at: string;
+};
+
+export type GeneratedProjectsData = {
+  generated_at: string;
+  projects: GitHubProjectData[];
+};
+
+export type ProjectOverride = Partial<Omit<ProjectConfig, "id">> & {
+  order?: number;
 };
 
 export type NavigationConfig = {

@@ -8,11 +8,11 @@ export function ProjectCard({ project }: { project: ProjectConfig }) {
       <h1 className="text-2xl font-medium">{project.title}</h1>
 
       <div className="space-y-8">
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-muted-foreground text-sm leading-relaxed">
           {project.description}
         </p>
 
-        <div className="flex flex-wrap gap-4 text-xs text-muted-foreground/70">
+        <div className="text-muted-foreground/70 flex flex-wrap gap-4 text-xs">
           {project.link && (
             <Link
               href={project.link}
@@ -22,6 +22,17 @@ export function ProjectCard({ project }: { project: ProjectConfig }) {
               aria-label={`Visiter le site ${project.title}`}
             >
               Visiter le site ↗
+            </Link>
+          )}
+          {project.npm && (
+            <Link
+              href={project.npm}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+              aria-label={`Voir le package npm ${project.title}`}
+            >
+              npm ↗
             </Link>
           )}
           <Link

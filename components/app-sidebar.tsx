@@ -48,9 +48,9 @@ export function AppSidebar() {
         <Navigation navigation={navigation.navAbout} pathname={pathname} />
         <Navigation navigation={navigation.navProjects} pathname={pathname} />
       </SidebarContent>
-      <SidebarFooter className="w-full flex justify-center">
+      <SidebarFooter className="flex w-full justify-center">
         <Button
-          className="cursor-pointer ml-auto"
+          className="ml-auto cursor-pointer"
           variant="ghost"
           onClick={() => {
             setTheme(theme === "light" ? "dark" : "light");

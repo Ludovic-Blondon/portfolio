@@ -1,4 +1,5 @@
 import { NavigationConfig } from "@/types";
+import { projects } from "./projects";
 
 export const navigation: {
   navAbout: NavigationConfig;
@@ -23,31 +24,11 @@ export const navigation: {
   },
   navProjects: {
     label: "Mes projets",
-    items: [
-      {
-        label: "Argument",
-        href: "/argument",
-      },
-      {
-        label: "Cocotte",
-        href: "/cocotte",
-      },
-      {
-        label: "Galerie",
-        href: "/galerie",
-      },
-      {
-        label: "CodeHub",
-        href: "/codehub",
-      },
-      {
-        label: "NomadHub",
-        href: "/nomadhub",
-      },
-      {
-        label: "Portfolio",
-        href: "/portfolio",
-      },
-    ],
+    items: Object.values(projects)
+      .map((project) => ({
+        label: project.title,
+        href: `/${project.id}`,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label, "fr")),
   },
 };

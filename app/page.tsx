@@ -29,7 +29,7 @@ export default function Home() {
 
       <div className="space-y-8">
         <div className="space-y-2">
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground text-sm leading-relaxed">
             Développeur fullstack passionné par l'exploration de nouvelles
             technologies et la création de solutions innovantes. J'aime
             expérimenter avec des outils modernes, partager mes découvertes et
@@ -39,7 +39,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-4 text-xs text-muted-foreground/70">
+        <div className="text-muted-foreground/70 flex flex-wrap gap-4 text-xs">
           <Link
             href="/career"
             className="hover:text-foreground transition-colors"

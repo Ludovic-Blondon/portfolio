@@ -33,7 +33,7 @@ export default function StudiesPage() {
             </ul>
 
             {/* Certifications */}
-            <div className="flex flex-wrap gap-2 text-xs text-muted-foreground/70">
+            <div className="text-muted-foreground/70 flex flex-wrap gap-2 text-xs">
               {study.certificates.map((certificate, index) => (
                 <span key={index}>
                   <Link
