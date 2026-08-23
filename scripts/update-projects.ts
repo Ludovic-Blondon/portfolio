@@ -1,19 +1,18 @@
+import { execFileSync } from "node:child_process";
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 
 const GITHUB_USER = "Ludovic-Blondon";
 const OUTPUT_PATH = join(process.cwd(), "lib/generated/projects.json");
+const REPO_LIMIT = 200;
 
-type GitHubRepo = {
+type GhRepo = {
   name: string;
   description: string | null;
-  html_url: string;
-  homepage: string | null;
-  topics: string[];
-  updated_at: string;
-  fork: boolean;
-  archived: boolean;
-  private: boolean;
+  url: string;
+  homepageUrl: string | null;
+  repositoryTopics: { name: string }[] | null;
+  updatedAt: string;
 };
 
 type GeneratedProject = {
@@ -26,78 +25,68 @@ type GeneratedProject = {
   updated_at: string;
 };
 
-function buildHeaders(): HeadersInit {
-  const headers: HeadersInit = {
-    Accept: "application/vnd.github+json",
-    "User-Agent": `${GITHUB_USER}-portfolio-script`,
-    "X-GitHub-Api-Version": "2022-11-28",
-  };
+function fetchRepos(): GhRepo[] {
+  const args = [
+    "repo",
+    "list",
+    GITHUB_USER,
+    "--limit",
+    String(REPO_LIMIT),
+    "--source",
+    "--no-archived",
+    "--visibility",
+    "public",
+    "--json",
+    "name,description,url,homepageUrl,repositoryTopics,updatedAt",
+  ];
 
-  const token = process.env.GITHUB_TOKEN;
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
-  }
+  console.log(`Fetching repos via gh: gh ${args.join(" ")}`);
 
-  return headers;
-}
+  try {
+    return JSON.parse(
+      execFileSync("gh", args, {
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "pipe"],
+      }),
+    ) as GhRepo[];
+  } catch (error) {
+    const err = error as NodeJS.ErrnoException & { stderr?: Buffer | string };
 
-function logRateLimit(response: Response): void {
-  const remaining = response.headers.get("x-ratelimit-remaining");
-  const limit = response.headers.get("x-ratelimit-limit");
-  const reset = response.headers.get("x-ratelimit-reset");
+    if (err.code === "ENOENT") {
+      throw new Error(
+        "GitHub CLI introuvable. Installe-la avec `brew install gh`, puis lance `gh auth login`.",
+      );
+    }
 
-  if (remaining && limit) {
-    const resetDate = reset
-      ? new Date(Number(reset) * 1000).toISOString()
-      : "unknown";
-    console.log(
-      `  ↳ Rate limit: ${remaining}/${limit} remaining (resets at ${resetDate})`,
-    );
-  }
-}
-
-async function fetchRepos(): Promise<GitHubRepo[]> {
-  const url = `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&type=owner`;
-  console.log(`Fetching repos from ${url}`);
-
-  const response = await fetch(url, { headers: buildHeaders() });
-  logRateLimit(response);
-
-  if (!response.ok) {
+    const stderr = err.stderr?.toString().trim();
     throw new Error(
-      `GitHub API request failed: ${response.status} ${response.statusText}`,
+      `La commande gh a échoué${stderr ? ` :\n${stderr}` : "."}\n` +
+        "Vérifie ton authentification avec `gh auth status` (ou `gh auth login`).",
     );
   }
-
-  return (await response.json()) as GitHubRepo[];
 }
 
 async function main(): Promise<void> {
-  if (!process.env.GITHUB_TOKEN) {
+  const repos = fetchRepos();
+  console.log(
+    `Found ${repos.length} public repos owned by ${GITHUB_USER} (excluding forks and archived)`,
+  );
+
+  if (repos.length === REPO_LIMIT) {
     console.warn(
-      "⚠️  No GITHUB_TOKEN set — using unauthenticated quota (60 req/h).",
+      `⚠️  Limite de ${REPO_LIMIT} repos atteinte — augmente REPO_LIMIT si des projets manquent.`,
     );
   }
 
-  const repos = await fetchRepos();
-  console.log(`Found ${repos.length} repos owned by ${GITHUB_USER}`);
-
-  const publicRepos = repos.filter(
-    (repo) => !repo.private && !repo.fork && !repo.archived,
-  );
-  console.log(
-    `Filtered to ${publicRepos.length} public repos (excluding forks and archived)`,
-  );
-
-  const projects: GeneratedProject[] = publicRepos
+  const projects: GeneratedProject[] = repos
     .map((repo) => ({
       id: repo.name.toLowerCase(),
       name: repo.name,
-      description: repo.description,
-      html_url: repo.html_url,
-      homepage: repo.homepage,
-      topics: repo.topics,
-      updated_at: repo.updated_at,
+      description: repo.description || null,
+      html_url: repo.url,
+      homepage: repo.homepageUrl || null,
+      topics: (repo.repositoryTopics ?? []).map((topic) => topic.name),
+      updated_at: repo.updatedAt,
     }))
     .sort(
       (a, b) =>
@@ -114,7 +103,7 @@ async function main(): Promise<void> {
   console.log(`✓ Wrote ${projects.length} projects to ${OUTPUT_PATH}`);
 }
 
-main().catch((error) => {
-  console.error(error);
+main().catch((error: Error) => {
+  console.error(`✗ ${error.message}`);
   process.exit(1);
 });
