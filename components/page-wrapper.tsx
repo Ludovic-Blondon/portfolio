@@ -1,7 +1,20 @@
-export function PageWrapper({ children }: { children: React.ReactNode }) {
+import { cn } from "@/lib/utils";
+
+export function PageWrapper({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <main className="flex flex-1 flex-col gap-6 p-6 md:gap-8 md:p-8">
+    <div
+      className={cn(
+        "flex flex-col gap-8 px-6 py-10 md:px-16 md:py-[72px]",
+        className,
+      )}
+    >
       {children}
-    </main>
+    </div>
   );
 }

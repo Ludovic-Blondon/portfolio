@@ -11,8 +11,10 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <PageWrapper>
-      <h1 className="text-2xl font-medium">Technologies</h1>
+    <PageWrapper className="max-w-[900px]">
+      <h1 className="font-pixel text-[18px] leading-[1.6] md:text-[22px]">
+        Technologies
+      </h1>
       <SkillsFilterClient skills={skills} />
     </PageWrapper>
   );

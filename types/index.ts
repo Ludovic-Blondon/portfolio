@@ -4,6 +4,8 @@ export type ProjectConfig = {
   id: string;
   title: string;
   description: string;
+  /** Accroche courte affichée sur les cartes de la sélection en page d'accueil. */
+  tagline: string;
   link?: string;
   npm?: string;
   github: string;
@@ -32,7 +34,14 @@ export type ProjectOverride = Partial<Omit<ProjectConfig, "id">> & {
 
 export type NavigationConfig = {
   label: string;
-  items: { label: string; href: string }[];
+  items: NavigationItem[];
+};
+
+export type NavigationItem = {
+  label: string;
+  href: string;
+  /** Numéro d'ordre affiché devant les projets dans la navigation. */
+  num?: string;
 };
 
 export type Project = {

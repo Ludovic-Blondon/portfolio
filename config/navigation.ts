@@ -1,5 +1,5 @@
 import { NavigationConfig } from "@/types";
-import { projects } from "./projects";
+import { projectNumbers, projectsByTitle } from "./projects";
 
 export const navigation: {
   navAbout: NavigationConfig;
@@ -24,11 +24,10 @@ export const navigation: {
   },
   navProjects: {
     label: "Mes projets",
-    items: Object.values(projects)
-      .map((project) => ({
-        label: project.title,
-        href: `/${project.id}`,
-      }))
-      .sort((a, b) => a.label.localeCompare(b.label, "fr")),
+    items: projectsByTitle.map((project) => ({
+      label: project.title,
+      href: `/${project.id}`,
+      num: projectNumbers[project.id],
+    })),
   },
 };
