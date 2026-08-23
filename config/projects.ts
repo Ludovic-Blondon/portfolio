@@ -11,8 +11,17 @@ const data = generated as GeneratedProjectsData;
 
 const FALLBACK_DESCRIPTION = "Description à venir prochainement.";
 
+/** Nombre de projets mis en avant dans la section « Sélection » de l'accueil. */
+const FEATURED_COUNT = 3;
+
 function toTitle(name: string): string {
   return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
+/** Repli sur la première phrase de la description quand aucune accroche n'est fournie. */
+function toTagline(description: string): string {
+  const [firstSentence] = description.split(/(?<=\.)\s/);
+  return firstSentence ?? description;
 }
 
 function buildProject(repo: GitHubProjectData): ProjectConfig {
@@ -26,6 +35,7 @@ function buildProject(repo: GitHubProjectData): ProjectConfig {
     id: repo.id,
     title,
     description,
+    tagline: override?.tagline ?? toTagline(description),
     link: override?.link || repo.homepage || undefined,
     npm: override?.npm,
     github: override?.github ?? repo.html_url,
@@ -51,4 +61,23 @@ const orderedRepos = [...data.projects].sort((a, b) => {
 
 export const projects: Record<string, ProjectConfig> = Object.fromEntries(
   orderedRepos.map((repo) => [repo.id, buildProject(repo)]),
+);
+
+/** Projets triés alphabétiquement, l'ordre utilisé par la navigation. */
+export const projectsByTitle: ProjectConfig[] = Object.values(projects).sort(
+  (a, b) => a.title.localeCompare(b.title, "fr"),
+);
+
+/** Numéro « 01 », « 02 »… attribué selon l'ordre alphabétique, partagé par la navigation et les pages projet. */
+export const projectNumbers: Record<string, string> = Object.fromEntries(
+  projectsByTitle.map((project, index) => [
+    project.id,
+    String(index + 1).padStart(2, "0"),
+  ]),
+);
+
+/** Les premiers projets de l'ordre curaté, mis en avant sur l'accueil. */
+export const featuredProjects: ProjectConfig[] = Object.values(projects).slice(
+  0,
+  FEATURED_COUNT,
 );

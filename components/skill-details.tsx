@@ -5,17 +5,56 @@ import { getSkillRelatedItems } from "@/lib/get-skill-related-items";
 import Link from "next/link";
 import { useEffect } from "react";
 
-interface SkillDetailsProps {
-  skill: Skill;
-  onClose: () => void;
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="flex flex-col gap-3">
+      <h3 className="text-dim text-[10px] tracking-[.2em] uppercase">
+        — {title}
+      </h3>
+      {children}
+    </section>
+  );
 }
 
-export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
+function ItemHeader({ title, meta }: { title: string; meta?: string }) {
+  return (
+    <div className="flex flex-wrap items-baseline gap-3">
+      <span className="text-chip text-[13px]">{title}</span>
+      {meta && <span className="text-dim text-[11px]">{meta}</span>}
+    </div>
+  );
+}
+
+function Lines({ children }: { children: React.ReactNode }) {
+  return <ul className="flex flex-col gap-[9px]">{children}</ul>;
+}
+
+function Line({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="text-muted-foreground text-[13px] leading-[1.75]">
+      {children}
+    </li>
+  );
+}
+
+export function SkillDetails({
+  skill,
+  onClose,
+}: {
+  skill: Skill;
+  onClose: () => void;
+}) {
   const { projects, experiences, studies } = getSkillRelatedItems(skill);
 
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
     };
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
@@ -24,153 +63,121 @@ export function SkillDetails({ skill, onClose }: SkillDetailsProps) {
   const hasContent =
     projects.length > 0 || experiences.length > 0 || studies.length > 0;
 
-  if (!hasContent) {
-    return null;
-  }
+  if (!hasContent) return null;
 
   return (
-    <div className="space-y-6 border-t pt-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-medium">{skill.name}</h2>
+    <div className="border-border flex flex-col gap-8 border-t pt-[26px]">
+      <div className="flex items-center justify-between gap-4">
+        <h2 className="font-pixel text-primary text-[11px] leading-[1.7]">
+          {skill.name}
+        </h2>
         <button
+          type="button"
           onClick={onClose}
-          className="text-muted-foreground/70 hover:text-foreground text-xs transition-colors"
           aria-label="Fermer"
+          className="text-dim hover:text-primary cursor-pointer text-[11px] tracking-[.18em] transition-colors"
         >
-          Fermer ✕
+          FERMER ✕
         </button>
       </div>
 
-      {/* Projects */}
       {projects.length > 0 && (
-        <div className="space-y-3">
-          <h3 className="text-muted-foreground text-sm font-medium">
-            Projets personnels
-          </h3>
-          <ul className="space-y-4">
+        <Section title="Projets personnels">
+          <ul className="flex flex-col gap-5">
             {projects.map((project) => (
-              <li key={project.id} className="space-y-1">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-sm font-medium">{project.title}</span>
-                  <div className="text-muted-foreground/70 flex gap-2 text-xs">
-                    {project.link && (
-                      <Link
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-foreground transition-colors"
-                        aria-label={`Visiter ${project.title} (ouvre dans un nouvel onglet)`}
-                      >
-                        Site ↗
-                      </Link>
-                    )}
+              <li key={project.id} className="flex flex-col gap-2">
+                <div className="flex flex-wrap items-baseline gap-3">
+                  <Link
+                    href={`/${project.id}`}
+                    className="text-chip hover:text-primary text-[13px] transition-colors"
+                  >
+                    {project.title}
+                  </Link>
+                  {project.link && (
                     <Link
-                      href={project.github}
+                      href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-foreground transition-colors"
-                      aria-label={`Voir le code source de ${project.title} sur GitHub (ouvre dans un nouvel onglet)`}
+                      aria-label={`Visiter ${project.title} (ouvre dans un nouvel onglet)`}
+                      className="text-dim hover:text-primary text-[11px] transition-colors"
                     >
-                      GitHub ↗
+                      SITE ↗
                     </Link>
-                  </div>
+                  )}
+                  <Link
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Voir le code source de ${project.title} sur GitHub (ouvre dans un nouvel onglet)`}
+                    className="text-dim hover:text-primary text-[11px] transition-colors"
+                  >
+                    GITHUB ↗
+                  </Link>
                 </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {project.description}
+                <p className="text-muted-foreground text-[13px] leading-[1.75]">
+                  {project.tagline}
                 </p>
               </li>
             ))}
           </ul>
-        </div>
+        </Section>
       )}
 
-      {/* Experiences */}
       {experiences.length > 0 && (
-        <div className="space-y-3">
-          <h3 className="text-muted-foreground text-sm font-medium">
-            Expériences professionnelles
-          </h3>
-          <div className="space-y-4">
+        <Section title="Expériences professionnelles">
+          <ul className="flex flex-col gap-5">
             {experiences.map((experience) => (
-              <div key={experience.company} className="space-y-2">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-sm font-medium">
-                    {experience.company}
-                  </span>
-                  <span className="text-muted-foreground/70 text-xs">
-                    {experience.period.start} -{" "}
-                    {experience.period.end === "Present"
+              <li key={experience.company} className="flex flex-col gap-2">
+                <ItemHeader
+                  title={experience.company}
+                  meta={`${experience.period.start} — ${
+                    experience.period.end === "Present"
                       ? "Aujourd'hui"
-                      : experience.period.end}
-                  </span>
-                </div>
-                <ul className="space-y-1">
+                      : experience.period.end
+                  }`}
+                />
+                <Lines>
                   {experience.achievements.map((achievement) => (
-                    <li
-                      key={achievement.id}
-                      className="flex gap-3 text-sm leading-relaxed"
-                    >
-                      <span className="text-muted-foreground/40 flex-shrink-0">
-                        –
-                      </span>
-                      <div className="flex flex-wrap items-baseline gap-2">
-                        <span className="text-muted-foreground">
-                          {achievement.description}
-                        </span>
-                        {achievement.landingPage && (
+                    <Line key={achievement.id}>
+                      {achievement.description}
+                      {achievement.landingPage && (
+                        <>
+                          {" "}
                           <Link
                             href={achievement.landingPage.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-muted-foreground/70 hover:text-foreground text-xs transition-colors"
                             aria-label={`Visiter ${achievement.landingPage.name} (ouvre dans un nouvel onglet)`}
+                            className="text-primary hover:underline"
                           >
                             {achievement.landingPage.name} ↗
                           </Link>
-                        )}
-                      </div>
-                    </li>
+                        </>
+                      )}
+                    </Line>
                   ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Studies */}
-      {studies.length > 0 && (
-        <div className="space-y-3">
-          <h3 className="text-muted-foreground text-sm font-medium">
-            Formations
-          </h3>
-          <ul className="space-y-4">
-            {studies.map((study) => (
-              <li key={study.id} className="space-y-2">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-sm font-medium">{study.title}</span>
-                  <span className="text-muted-foreground/70 text-xs">
-                    {study.year}
-                  </span>
-                </div>
-                <ul className="space-y-1">
-                  {study.descriptions.map((desc, idx) => (
-                    <li
-                      key={idx}
-                      className="flex gap-3 text-sm leading-relaxed"
-                    >
-                      <span className="text-muted-foreground/40 flex-shrink-0">
-                        –
-                      </span>
-                      <span className="text-muted-foreground">{desc}</span>
-                    </li>
-                  ))}
-                </ul>
+                </Lines>
               </li>
             ))}
           </ul>
-        </div>
+        </Section>
+      )}
+
+      {studies.length > 0 && (
+        <Section title="Formations">
+          <ul className="flex flex-col gap-5">
+            {studies.map((study) => (
+              <li key={study.id} className="flex flex-col gap-2">
+                <ItemHeader title={study.title} meta={study.year} />
+                <Lines>
+                  {study.descriptions.map((description) => (
+                    <Line key={description}>{description}</Line>
+                  ))}
+                </Lines>
+              </li>
+            ))}
+          </ul>
+        </Section>
       )}
     </div>
   );

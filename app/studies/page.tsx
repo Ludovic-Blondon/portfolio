@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { studies } from "@/config/studies";
 import { PageWrapper } from "@/components/page-wrapper";
-import { Timeline, TimelineItem, TimelineHeader } from "@/components/timeline";
+import { Entry, EntryLine, EntryLines, EntryList } from "@/components/entry";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -12,45 +12,40 @@ export const metadata: Metadata = {
 
 export default function StudiesPage() {
   return (
-    <PageWrapper>
-      <h1 className="text-2xl font-medium">Formation</h1>
+    <PageWrapper className="max-w-[900px] gap-11">
+      <h1 className="font-pixel text-[18px] leading-[1.6] md:text-[22px]">
+        Mes études
+      </h1>
 
-      <Timeline>
+      <EntryList>
         {studies.map((study) => (
-          <TimelineItem key={study.id}>
-            <TimelineHeader title={study.title} subtitle={study.year} />
-
-            {/* Descriptions */}
-            <ul className="space-y-1">
-              {study.descriptions.map((description, index) => (
-                <li key={index} className="flex gap-3 text-sm leading-relaxed">
-                  <span className="text-muted-foreground/40 flex-shrink-0">
-                    –
-                  </span>
-                  <span className="text-muted-foreground">{description}</span>
-                </li>
+          <Entry key={study.id} title={study.title} meta={study.year}>
+            <EntryLines>
+              {study.descriptions.map((description) => (
+                <EntryLine key={description}>{description}</EntryLine>
               ))}
-            </ul>
+            </EntryLines>
 
-            {/* Certifications */}
-            <div className="text-muted-foreground/70 flex flex-wrap gap-2 text-xs">
-              {study.certificates.map((certificate, index) => (
-                <span key={index}>
-                  <Link
-                    href={certificate.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${certificate.name} (ouvre dans un nouvel onglet)`}
-                    className="hover:text-foreground transition-colors"
-                  >
-                    {certificate.name} ↗
-                  </Link>
-                </span>
-              ))}
-            </div>
-          </TimelineItem>
+            {study.certificates.length > 0 && (
+              <ul className="flex flex-wrap gap-2">
+                {study.certificates.map((certificate) => (
+                  <li key={certificate.path}>
+                    <Link
+                      href={certificate.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${certificate.name} (ouvre dans un nouvel onglet)`}
+                      className="border-border text-faint hover:border-primary hover:text-primary block border px-2 py-[5px] text-[10px] tracking-[.08em] transition-colors"
+                    >
+                      {certificate.name} ↗
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </Entry>
         ))}
-      </Timeline>
+      </EntryList>
     </PageWrapper>
   );
 }

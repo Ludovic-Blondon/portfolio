@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Bitcount_Single } from "next/font/google";
+import { IBM_Plex_Mono, Press_Start_2P } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
-import { Separator } from "@/components/ui/separator";
-import { AppBreadcrumb } from "@/components/app-breadcrumb";
-import Link from "next/link";
-import { Github, Linkedin } from "lucide-react";
+import { SiteNav } from "@/components/site-nav";
+import { MobileNav } from "@/components/mobile-nav";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -23,25 +14,20 @@ export const metadata: Metadata = {
   description: "Portfolio de Ludovic Blondon",
 };
 
-const bitcountSingle = Bitcount_Single({
-  variable: "--font-bitcount-single",
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
+  preload: true,
+  display: "swap",
+});
+
+const pressStart2P = Press_Start_2P({
+  variable: "--font-press-start-2p",
+  subsets: ["latin"],
+  weight: "400",
   fallback: ["monospace"],
   preload: true,
-  display: "swap",
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  preload: true,
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  preload: false, // Utilisée moins fréquemment
   display: "swap",
 });
 
@@ -51,56 +37,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" suppressHydrationWarning>
-      <head />
+    <html lang="fr" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bitcountSingle.variable} antialiased`}
+        className={`${ibmPlexMono.variable} ${pressStart2P.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SidebarProvider>
-            <AppSidebar />
-            <SidebarInset>
-              <header className="flex h-14 shrink-0 items-center gap-2 border-b px-4">
-                <div className="flex flex-1 items-center gap-2 px-3">
-                  <SidebarTrigger className="-ml-1" />
-                  <Separator
-                    orientation="vertical"
-                    className="mr-2 data-[orientation=vertical]:h-4"
-                  />
-                  <AppBreadcrumb />
-                </div>
-                <div className="ml-auto flex items-center gap-2 px-3">
-                  <Link
-                    href="https://github.com/Ludovic-Blondon"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Voir mon profil GitHub"
-                  >
-                    <Github className="size-4" />
-                  </Link>
-                  <Separator
-                    orientation="vertical"
-                    className="mx-2 data-[orientation=vertical]:h-4"
-                  />
-                  <Link
-                    href="https://www.linkedin.com/in/ludovic-blondon-746016178/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Voir mon profil LinkedIn"
-                  >
-                    <Linkedin className="size-4" />
-                  </Link>
-                </div>
-              </header>
-              {children}
-            </SidebarInset>
-          </SidebarProvider>
-        </ThemeProvider>
+        <div className="md:flex md:h-dvh md:overflow-hidden">
+          <SiteNav className="border-border hidden w-[300px] flex-none border-r md:flex md:h-dvh" />
+          <div className="flex min-w-0 flex-1 flex-col md:h-dvh md:overflow-y-auto">
+            <MobileNav />
+            <main className="flex-1">{children}</main>
+          </div>
+        </div>
         <SpeedInsights />
         <Analytics />
       </body>
