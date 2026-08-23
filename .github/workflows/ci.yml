@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format check
+        run: pnpm format
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm type:check
+
+      # Le build lit lib/generated/projects.json, qui est commité : pas besoin
+      # de gh ni de token ici. `pnpm project:update` reste une étape manuelle.
+      - name: Build
+        run: pnpm build
+
+      # Seuil `high` : les transitives dev-only sous eslint-config-next ne
+      # doivent pas bloquer une PR, et --prod les exclut déjà du périmètre.
+      - name: Audit
+        run: pnpm audit --prod --audit-level high

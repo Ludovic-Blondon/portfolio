@@ -1,0 +1,67 @@
+# Mises à jour de dépendances, une fois par semaine.
+# Stratégie du projet (cf. CLAUDE.md) : on monte les paquets vulnérables
+# directement, jamais via des overrides pnpm.
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 5
+    groups:
+      # next et eslint-config-next sont épinglés sur la même version exacte.
+      # Les monter séparément laisse le lint cassé le temps d'une PR, donc
+      # toutes les update-types ici, majeures comprises : ils bougent d'un bloc.
+      next:
+        patterns:
+          - "next"
+          - "eslint-config-next"
+        update-types: ["major", "minor", "patch"]
+      # Même raisonnement : react et react-dom sont épinglés sans caret, et
+      # leurs @types doivent suivre la même majeure.
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+        update-types: ["major", "minor", "patch"]
+      # tailwindcss et @tailwindcss/postcss partagent le même numéro de version
+      # en amont ; prettier-plugin-tailwindcss est lié à la majeure de Tailwind.
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/postcss"
+          - "prettier-plugin-tailwindcss"
+        update-types: ["major", "minor", "patch"]
+      # Un seul lot hebdomadaire pour tout le reste en mineur et correctif.
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+    # Aucune majeure ignorée en dehors des groupes ci-dessus : une PR majeure
+    # en échec est une information (ce qui casse, et où), et `ignore` la ferait
+    # disparaître — y compris pour les mises à jour de sécurité de ces versions.
+    labels: ["dependencies"]
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+
+  # Aucun workflow dans .github/workflows pour l'instant : ce bloc ne produira
+  # rien tant qu'il n'y en a pas, et prendra le relais dès la première action.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Paris"
+    groups:
+      github-actions:
+        patterns: ["*"]
+    labels: ["dependencies", "github-actions"]
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
