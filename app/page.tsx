@@ -30,7 +30,7 @@ export default function Home() {
 
       <section className="flex max-w-[660px] flex-col gap-[22px]">
         <p className="text-primary text-[11px] tracking-[.24em]">
-          DÉVELOPPEUR FULLSTACK · FRANCE
+          DÉVELOPPEUR FULLSTACK
         </p>
         <h1 className="font-pixel text-[22px] leading-[1.6] md:text-[30px]">
           Ludovic
