@@ -11,8 +11,8 @@ const data = generated as GeneratedProjectsData;
 
 const FALLBACK_DESCRIPTION = "Description à venir prochainement.";
 
-/** Nombre de projets mis en avant dans la section « Sélection » de l'accueil. */
-const FEATURED_COUNT = 3;
+/** Projets mis en avant dans la section « Sélection » de l'accueil, indépendants de l'ordre du menu. */
+const FEATURED_IDS = ["diag-adresse", "skullking", "casemorph"];
 
 function toTitle(name: string): string {
   return name.charAt(0).toUpperCase() + name.slice(1);
@@ -63,21 +63,17 @@ export const projects: Record<string, ProjectConfig> = Object.fromEntries(
   orderedRepos.map((repo) => [repo.id, buildProject(repo)]),
 );
 
-/** Projets triés alphabétiquement, l'ordre utilisé par la navigation. */
-export const projectsByTitle: ProjectConfig[] = Object.values(projects).sort(
-  (a, b) => a.title.localeCompare(b.title, "fr"),
-);
+/** Ordre d'affichage : `order` des overrides d'abord, puis les projets récents sans `order`. */
+export const orderedProjects: ProjectConfig[] = Object.values(projects);
 
-/** Numéro « 01 », « 02 »… attribué selon l'ordre alphabétique, partagé par la navigation et les pages projet. */
+/** Numéro « 01 », « 02 »… suivant l'ordre d'affichage, partagé par la navigation et les pages projet. */
 export const projectNumbers: Record<string, string> = Object.fromEntries(
-  projectsByTitle.map((project, index) => [
+  orderedProjects.map((project, index) => [
     project.id,
     String(index + 1).padStart(2, "0"),
   ]),
 );
 
-/** Les premiers projets de l'ordre curaté, mis en avant sur l'accueil. */
-export const featuredProjects: ProjectConfig[] = Object.values(projects).slice(
-  0,
-  FEATURED_COUNT,
-);
+export const featuredProjects: ProjectConfig[] = FEATURED_IDS.map(
+  (id) => projects[id],
+).filter((project) => project !== undefined);

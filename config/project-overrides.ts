@@ -42,7 +42,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Bibliothèque TypeScript pour convertir les conventions de nommage des clés d'objets, avec inférence de types complète.",
     },
-    order: 3,
+    order: 4,
   },
   "ts-safe-path": {
     title: "ts-safe-path",
@@ -56,7 +56,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Accès type-safe aux propriétés imbriquées en TypeScript, avec inférence complète et autocomplétion.",
     },
-    order: 4,
+    order: 5,
   },
   "durations-ts": {
     title: "durations-ts",
@@ -70,7 +70,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Parsing de durées TypeScript avec validation à la compilation et zéro dépendance.",
     },
-    order: 5,
+    order: 6,
   },
   "block-puzzle-blast": {
     title: "Block Puzzle Blast",
@@ -83,7 +83,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Jeu de puzzle mobile iOS/Android construit avec React Native et Expo.",
     },
-    order: 6,
+    order: 7,
   },
   portfolio: {
     title: "Portfolio",
@@ -98,6 +98,6 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       description:
         "Portfolio personnel construit avec Next.js 16 et Tailwind CSS.",
     },
-    order: 7,
+    order: 3,
   },
 };

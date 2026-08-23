@@ -1,5 +1,5 @@
 import { NavigationConfig } from "@/types";
-import { projectNumbers, projectsByTitle } from "./projects";
+import { orderedProjects, projectNumbers } from "./projects";
 
 export const navigation: {
   navAbout: NavigationConfig;
@@ -24,7 +24,7 @@ export const navigation: {
   },
   navProjects: {
     label: "Mes projets",
-    items: projectsByTitle.map((project) => ({
+    items: orderedProjects.map((project) => ({
       label: project.title,
       href: `/${project.id}`,
       num: projectNumbers[project.id],
