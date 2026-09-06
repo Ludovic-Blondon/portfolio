@@ -23,6 +23,7 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       "Construite avec Expo SDK 57, expo-router et NativeWind, elle stocke l'intégralité des parties en local via Drizzle et SQLite : aucun compte, aucun serveur, aucune donnée qui quitte le téléphone. Interface traduite en quatre langues.",
     tagline:
       "Feuille de score du jeu Skull King, 100 % hors ligne, en quatre langues.",
+    appStore: "https://apps.apple.com/fr/app/skull-scores/id6806288500",
     metadata: {
       title: "Skull Scores",
       description:
