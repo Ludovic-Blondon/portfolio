@@ -1,0 +1,32 @@
+# Referme les PR Dependabot sans intervention : le lot mineur/correctif part en
+# auto-merge, GitHub attend que `ci` soit vert avant de fusionner. Les majeures
+# restent ouvertes pour relecture.
+name: Dependabot auto-merge
+
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Métadonnées de la mise à jour
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+
+      # Le lot `deps` ne contient que du mineur et du correctif (cf.
+      # dependabot.yml). Les PR hors lot — typiquement une alerte de sécurité
+      # isolée — passent par leur update-type.
+      - name: Active l'auto-merge
+        if: |
+          steps.metadata.outputs.dependency-group == 'deps' ||
+          (steps.metadata.outputs.dependency-group == '' &&
+           steps.metadata.outputs.update-type != 'version-update:semver-major')
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
