@@ -8,6 +8,10 @@ export type ProjectConfig = {
   tagline: string;
   link?: string;
   npm?: string;
+  /** Fiche App Store, pour les projets mobiles publiés. */
+  appStore?: string;
+  /** Fiche Google Play, pour les projets mobiles publiés. */
+  playStore?: string;
   github: string;
   metadata: Metadata;
   technologies: string[];

@@ -38,6 +38,8 @@ function buildProject(repo: GitHubProjectData): ProjectConfig {
     tagline: override?.tagline ?? toTagline(description),
     link: override?.link || repo.homepage || undefined,
     npm: override?.npm,
+    appStore: override?.appStore,
+    playStore: override?.playStore,
     github: override?.github ?? repo.html_url,
     metadata: {
       title,
