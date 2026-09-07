@@ -5,32 +5,36 @@ import { TagList } from "./tag-list";
 import { projectNumbers } from "@/config/projects";
 import { ProjectConfig } from "@/types";
 
+type ProjectLink = { href: string; label: string; ariaLabel: string };
+
 export function ProjectCard({ project }: { project: ProjectConfig }) {
   const links = [
-    ...(project.link
-      ? [
-          {
-            href: project.link,
-            label: "VISITER ↗",
-            ariaLabel: `Visiter le site ${project.title}`,
-          },
-        ]
-      : []),
-    ...(project.npm
-      ? [
-          {
-            href: project.npm,
-            label: "NPM ↗",
-            ariaLabel: `Voir le package npm ${project.title}`,
-          },
-        ]
-      : []),
+    {
+      href: project.link,
+      label: "VISITER ↗",
+      ariaLabel: `Visiter le site ${project.title}`,
+    },
+    {
+      href: project.appStore,
+      label: "APP STORE ↗",
+      ariaLabel: `Télécharger ${project.title} sur l'App Store`,
+    },
+    {
+      href: project.playStore,
+      label: "GOOGLE PLAY ↗",
+      ariaLabel: `Télécharger ${project.title} sur Google Play`,
+    },
+    {
+      href: project.npm,
+      label: "NPM ↗",
+      ariaLabel: `Voir le package npm ${project.title}`,
+    },
     {
       href: project.github,
       label: "GITHUB ↗",
       ariaLabel: `Consulter le code de ${project.title} sur GitHub`,
     },
-  ];
+  ].filter((link): link is ProjectLink => Boolean(link.href));
 
   return (
     <PageWrapper className="max-w-[780px] gap-[34px]">
@@ -61,7 +65,7 @@ export function ProjectCard({ project }: { project: ProjectConfig }) {
       <div className="flex flex-wrap gap-3">
         {links.map((link) => (
           <ConsoleLink
-            key={link.href}
+            key={link.label}
             href={link.href}
             external
             aria-label={link.ariaLabel}
