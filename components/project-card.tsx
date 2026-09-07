@@ -8,7 +8,7 @@ import { ProjectConfig } from "@/types";
 type ProjectLink = { href: string; label: string; ariaLabel: string };
 
 export function ProjectCard({ project }: { project: ProjectConfig }) {
-  const links: ProjectLink[] = [
+  const links = [
     {
       href: project.link,
       label: "VISITER ↗",
@@ -34,7 +34,7 @@ export function ProjectCard({ project }: { project: ProjectConfig }) {
       label: "GITHUB ↗",
       ariaLabel: `Consulter le code de ${project.title} sur GitHub`,
     },
-  ].filter((link): link is ProjectLink => link.href !== undefined);
+  ].filter((link): link is ProjectLink => Boolean(link.href));
 
   return (
     <PageWrapper className="max-w-[780px] gap-[34px]">
@@ -65,7 +65,7 @@ export function ProjectCard({ project }: { project: ProjectConfig }) {
       <div className="flex flex-wrap gap-3">
         {links.map((link) => (
           <ConsoleLink
-            key={link.href}
+            key={link.label}
             href={link.href}
             external
             aria-label={link.ariaLabel}
